@@ -2010,42 +2010,43 @@ note-default {
     margin-left: 1rem;
   }
 }
-highlight [data-rel] {
+.code-wrapper {
   position: relative;
   overflow: hidden;
   border-radius: 5px;
-  margin: 0px 0;
+  box-shadow: 0 10px 10px 0px rgba(0,0,0,0.4);
+  margin: 30px 0;
 }
-highlight [data-rel] ::-webkit-scrollbar {
-  height: 5px;
+.code-wrapper ::-webkit-scrollbar {
+  height: 10px;
 }
-highlight [data-rel] ::-webkit-scrollbar-track {
+.code-wrapper ::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
   border-radius: 10px;
 }
-highlight [data-rel] ::-webkit-scrollbar-thumb {
+.code-wrapper ::-webkit-scrollbar-thumb {
   border-radius: 10px;
   -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
 }
-highlight [data-rel]::before {
+.code-wrapper::before {
   color: #fff;
   content: attr(data-rel);
-  height: 38px;
-  line-height: 38px;
-  background: #21252b;
+  height: 30px;
+  line-height: 30px;
+  background: #4f5665;
   color: #fff;
   font-size: 16px;
-  position: absolute;
+  position: relative;
   top: 0;
   left: 0;
   width: 100%;
   font-family: 'Source Sans Pro', sans-serif;
   font-weight: bold;
-  padding: 0px 70px;
+  padding: 0px 80px;
   text-indent: 15px;
   float: left;
 }
-highlight [data-rel]::after {
+.code-wrapper::after {
   content: ' ';
   position: absolute;
   -webkit-border-radius: 50%;
@@ -2059,4 +2060,7 @@ highlight [data-rel]::after {
   -webkit-box-shadow: 20px 0px #fdbc40, 40px 0px #35cd4b;
   box-shadow: 20px 0px #fdbc40, 40px 0px #35cd4b;
   z-index: 3;
+}
+.code-wrapper > pre {
+  margin-bottom: 0;
 }
