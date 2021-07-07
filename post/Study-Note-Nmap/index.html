@@ -216,7 +216,6 @@
   <main>
     
       
-
 <div class="container-fluid nopadding-x">
   <div class="row nomargin-x">
     <div class="d-none d-lg-block col-lg-2"></div>
@@ -234,7 +233,7 @@
 
 <br>
 
-<h1 id="nmap语法"><a href="#nmap语法" class="headerlink" title="nmap语法"></a>nmap语法</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">nmap [扫描类型&amp;选项] (目标)<br></code></pre></td></tr></table></figure>
+<h1 id="nmap语法"><a href="#nmap语法" class="headerlink" title="nmap语法"></a>nmap语法</h1><div class="code-wrapper"><pre><code class="hljs shell">nmap [扫描类型&amp;选项] (目标)</code></pre></div>
 
 <br>
 
@@ -307,7 +306,7 @@
 <p><img src="https://raw.githubusercontent.com/MokYan/Figurebed/master/nmap/nmap-O.jpg" srcset="/Study/img/loading.gif" lazyload alt="nmap -O扫描"></p>
 <br>
 
-<h2 id="脚本扫描"><a href="#脚本扫描" class="headerlink" title="脚本扫描"></a>脚本扫描</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">nmap --script 具体的脚本 目标<br></code></pre></td></tr></table></figure>
+<h2 id="脚本扫描"><a href="#脚本扫描" class="headerlink" title="脚本扫描"></a>脚本扫描</h2><div class="code-wrapper"><pre><code class="hljs shell">nmap --script 具体的脚本 目标</code></pre></div>
 
 <p>nmap官方脚本文档 : <a target="_blank" rel="noopener" href="https://nmap.org/nsedoc/">https://nmap.org/nsedoc/</a></p>
 <p>左侧列出了脚本的分类，点击分类 可以看到每一个分类下有很多具体的脚本供我们使用。14大分类具体对应为</p>
@@ -331,7 +330,7 @@
 <p><img src="https://raw.githubusercontent.com/MokYan/Figurebed/master/nmap/nmap-sC.jpg" srcset="/Study/img/loading.gif" lazyload alt="nmap -sC-SSH"></p>
 <br>
 
-<h2 id="时间模板"><a href="#时间模板" class="headerlink" title="时间模板"></a>时间模板</h2><h3 id="T-lt-0-5-gt-设置时间模板"><a href="#T-lt-0-5-gt-设置时间模板" class="headerlink" title="-T&lt;0-5&gt; 设置时间模板"></a>-T&lt;0-5&gt; 设置时间模板</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">nmap -sS -T&lt;0-5&gt; 192.168.1.148<br></code></pre></td></tr></table></figure>
+<h2 id="时间模板"><a href="#时间模板" class="headerlink" title="时间模板"></a>时间模板</h2><h3 id="T-lt-0-5-gt-设置时间模板"><a href="#T-lt-0-5-gt-设置时间模板" class="headerlink" title="-T&lt;0-5&gt; 设置时间模板"></a>-T&lt;0-5&gt; 设置时间模板</h3><div class="code-wrapper"><pre><code class="hljs shell">nmap -sS -T&lt;0-5&gt; 192.168.1.148</code></pre></div>
 
 <p>优化时间控制选项的功能很强大也很有效，但有些用户会被迷惑。此外， 往往选择合适参数的时间超过了所需优化的扫描时间。因此，Nmap提供了一些简单的 方法，使用6个时间模板，使用时采用-T选项及数字(0 - 5) 或名称。模板名称有<code>paranoid (0)、sneaky (1)、polite (2)、normal(3)、 aggressive (4)和insane (5)</code></p>
 <ul>
@@ -343,7 +342,7 @@
 </ul>
 <p><img src="https://raw.githubusercontent.com/MokYan/Figurebed/master/nmap/nmap-T.jpg" srcset="/Study/img/loading.gif" lazyload alt="nmap -T"></p>
 <h2 id="其他选项"><a href="#其他选项" class="headerlink" title="其他选项"></a>其他选项</h2><h3 id="A-综合扫描"><a href="#A-综合扫描" class="headerlink" title="-A 综合扫描"></a>-A 综合扫描</h3><p>此选项包含了 1-10000端口ping扫描 , 操作系统扫描 , 脚本扫描 , 路由追踪 , 服务探测</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">nmap -A 192.168.50.148<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs shell">nmap -A 192.168.50.148</code></pre></div>
 
 <p><img src="https://raw.githubusercontent.com/MokYan/Figurebed/master/nmap/nmap-A.jpg" srcset="/Study/img/loading.gif" lazyload alt="nmap -A"></p>
 

