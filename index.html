@@ -1,0 +1,937 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/Study/img/favicon.png">
+  <link rel="icon" href="/Study/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="M0kY4n">
+  <meta name="keywords" content="">
+  
+  <title>M0kY4n&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/Study/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"mokyan.github.io","root":"/Study/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/Study/js/utils.js" ></script>
+  <script  src="/Study/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/Study/">&nbsp;<strong>MokYan</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Study/">
+                <i class="iconfont icon-home-fill"></i>
+                主页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Study/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Study/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Study/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Study/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/Study/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="The more you know, the more you don't know">
+              
+            </span>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div class="py-5" id="board"
+          style=margin-top:0>
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/Study/post/Upload-Labs/" target="_self">
+          <img src="https://raw.githubusercontent.com/MokYan/Figurebed/master/img/上传logo.png" srcset="/Study/img/loading.gif" lazyload alt="文件上传漏洞总结 : Upload-Labs通关手册">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/Study/post/Upload-Labs/" target="_self">
+          文件上传漏洞总结 : Upload-Labs通关手册
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/Study/post/Upload-Labs/" target="_self">
+          
+          
+            
+          
+          Upload-Labs通关手册
+
+靶机环境
+
+
+Software
+NAME
+
+
+
+浏览器
+Chrome
+
+
+连接WebShell工具
+AntSword
+
+
+抓包工具
+Burpsuite Pro
+
+
+路由器代理插件
+Proxy SwitchyOmega
+
+
+12345#webshell代码&lt;?php    @eval($_REQUEST[&quot;shell&quot;]);?&gt;
+
+
+
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-07-06 18:25" pubdate>
+              2021-07-06
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/Study/categories/%E9%9D%B6%E6%9C%BA%E7%BB%83%E4%B9%A0/">靶机练习</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/Study/tags/PHP/">PHP</a>
+            
+              <a href="/Study/tags/Web%E6%BC%8F%E6%B4%9E/">Web漏洞</a>
+            
+              <a href="/Study/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/">文件上传</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/Study/post/Study-Note-Nmap/" target="_self">
+          <img src="https://github.com/MokYan/Figurebed/blob/master/The%20cover/nmap.png?raw=true" srcset="/Study/img/loading.gif" lazyload alt="Nmap 学习手册">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/Study/post/Study-Note-Nmap/" target="_self">
+          Nmap 学习手册
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/Study/post/Study-Note-Nmap/" target="_self">
+          
+          
+            
+          
+          nmap学习手册
+nmap 描述​        Nmap (“Network Mapper(网络映射器)”) 是一款开放源代码的 网络探测和安全审核的工具。它的设计目标是快速地扫描大型网络，当然用它扫描单个 主机也没有问题。Nmap以新颖的方式使用原始IP报文来发现网络上有哪些主机，那些 主机提供什么服务(应用程序名和版本)，那些服务运行在什么操作系统(包括版本信息)， 它们使用什么类型的报文过
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-07-06 18:23" pubdate>
+              2021-07-06
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/Study/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/Study/tags/Web%E5%AE%89%E5%85%A8/">Web安全</a>
+            
+              <a href="/Study/tags/Nmap/">Nmap</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/Study/post/SSH-private-key-is-eaked/" target="_self">
+          <img src="https://raw.githubusercontent.com/MokYan/Figurebed/master/drone/SSH-Server/SSH-%20Service%20penetrates%20the%20root%20host/logo.jpg" srcset="/Study/img/loading.gif" lazyload alt="SSH-私钥泄露">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/Study/post/SSH-private-key-is-eaked/" target="_self">
+          SSH-私钥泄露
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/Study/post/SSH-private-key-is-eaked/" target="_self">
+          
+          
+            
+          
+          0x00 环境配置
+   SSH-私钥泄露靶机
+   Kali 攻击机
+   靶机与攻击机处于同一网段
+
+0x01 信息收集
+寻找靶机IP
+可以使用netdiscover或者 nmap进行IP扫描
+12netdiscover 10.112.132.0/24nmap 10.112.132.0/24
+
+
+扫描服务
+因为是使用了nmap进行了扫描IP , 所以顺便把服务也一起扫描了
+1nmap -A -
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-07-06 17:52" pubdate>
+              2021-07-06
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/Study/categories/%E9%9D%B6%E6%9C%BA%E7%BB%83%E4%B9%A0/">靶机练习</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/Study/tags/Web%E5%AE%89%E5%85%A8/">Web安全</a>
+            
+              <a href="/Study/tags/SSH/">SSH</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/Study/post/SSH-Service-penetrates-the-root-host/" target="_self">
+          <img src="https://raw.githubusercontent.com/MokYan/Figurebed/master/drone/SSH-Server/SSH-%20Service%20penetrates%20the%20root%20host/logo.jpg" srcset="/Study/img/loading.gif" lazyload alt="SSH-服务渗透root主机">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/Study/post/SSH-Service-penetrates-the-root-host/" target="_self">
+          SSH-服务渗透root主机
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/Study/post/SSH-Service-penetrates-the-root-host/" target="_self">
+          
+          
+            
+          
+          0x00 环境配置
+   SSH-服务渗透root主机靶机
+   Kali 攻击机
+   靶机与攻击机处于同一网段
+
+0x01 信息收集
+寻找靶机IP
+由于Kali与靶机在统一网段 , 所以直接扫Kali IP所在的网段 , 使用netdiscover进行扫描
+1netdiscover 10.112.132.0/24
+
+
+
+扫描靶机服务
+得知靶机的IP后 , 使用nmap进行服务扫描 , nmap
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-07-06 17:52" pubdate>
+              2021-07-06
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/Study/categories/%E9%9D%B6%E6%9C%BA%E7%BB%83%E4%B9%A0/">靶机练习</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/Study/tags/Web%E5%AE%89%E5%85%A8/">Web安全</a>
+            
+              <a href="/Study/tags/SSH/">SSH</a>
+            
+              <a href="/Study/tags/msfconsole/">msfconsole</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/Study/post/Common-Firewalls/" target="_self">
+          <img src="https://github.com/MokYan/Figurebed/blob/master/WAF/WAF.png?raw=true" srcset="/Study/img/loading.gif" lazyload alt="[转载] | 常见WAF拦截页面汇总">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/Study/post/Common-Firewalls/" target="_self">
+          [转载] | 常见WAF拦截页面汇总
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/Study/post/Common-Firewalls/" target="_self">
+          
+          
+            
+          
+          #前言
+
+前几天在微信公众号 @HACK学习呀 看到一片文章 干货 | 常见WAF拦截页面总结 , 文中提到一位大佬 @madcoding 的一片文章 WAF的识别与绕过 两篇文章都有相同的资料和不同的资料 , 为了以后方便查阅,所以将两篇文章的资料进行汇总 . 本文所有资料都是根据两篇文章进行整合,所以若有错误的地方,请大佬指出!!!
+
+
+
+1.    360主机卫士或360webscan
+
+
+
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-07-06 17:31" pubdate>
+              2021-07-06
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/Study/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/Study/tags/Web%E5%AE%89%E5%85%A8/">Web安全</a>
+            
+              <a href="/Study/tags/WAF/">WAF</a>
+            
+              <a href="/Study/tags/%E8%BD%AC%E8%BD%BD/">转载</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/Study/post/XSS-Exercise-2/" target="_self">
+          <img src="https://github.com/MokYan/Figurebed/blob/master/img/xss-logo.png?raw=true" srcset="/Study/img/loading.gif" lazyload alt="XSS弹窗练习 ：http://test.xss.tv">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/Study/post/XSS-Exercise-2/" target="_self">
+          XSS弹窗练习 ：http://test.xss.tv
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/Study/post/XSS-Exercise-2/" target="_self">
+          
+          
+            
+          
+          XSS弹窗闯关练习
+
+前言靶机源码与 http://test.xss.tv 的题目是一样的,并且删除了后面几道已经失效的Flash XSS题目,本文连接来自@国光博客下《XSS从零开始》文章的连接
+
+项目地址: https://github.com/sqlsec/xssgame
+
+
+
+
+0x00 先热个身吧12345&lt;?phpini_set(&quot;display_errors&quot
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-07-05 18:39" pubdate>
+              2021-07-05
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/Study/categories/%E9%9D%B6%E6%9C%BA%E7%BB%83%E4%B9%A0/">靶机练习</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/Study/tags/Web%E5%AE%89%E5%85%A8/">Web安全</a>
+            
+              <a href="/Study/tags/XSS/">XSS</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/Study/post/XSS-Exercise-1/" target="_self">
+          <img src="https://github.com/MokYan/Figurebed/blob/master/img/xss-logo.png?raw=true" srcset="/Study/img/loading.gif" lazyload alt="XSS弹窗练习 ：xss.haozi.me">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/Study/post/XSS-Exercise-1/" target="_self">
+          XSS弹窗练习 ：xss.haozi.me
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/Study/post/XSS-Exercise-1/" target="_self">
+          
+          
+            
+          
+          XSS弹窗闯关练习
+
+前言这是一个xss弹窗练习平台，让你一个点一个点的理解 XSS。页面上展现了源码，方便直接，更易理解其原理。
+
+平台地址: https://xss.haozi.me/#/
+
+首次进去需要输入一个昵称,且提醒你请在 input code 框内输入代码，以至弹出 alert(1) 为过关
+
+
+
+
+0x001234567服务器端代码:function render (input) 
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-07-05 18:39" pubdate>
+              2021-07-05
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/Study/categories/%E9%9D%B6%E6%9C%BA%E7%BB%83%E4%B9%A0/">靶机练习</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/Study/tags/Web%E5%AE%89%E5%85%A8/">Web安全</a>
+            
+              <a href="/Study/tags/XSS/">XSS</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/Study/post/Study-Note-For-Docker/" target="_self">
+          <img src="https://github.com/MokYan/Figurebed/blob/master/The%20cover/docker.png?raw=true" srcset="/Study/img/loading.gif" lazyload alt="Docker保姆级教程：从入门到入土">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/Study/post/Study-Note-For-Docker/" target="_self">
+          Docker保姆级教程：从入门到入土
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/Study/post/Study-Note-For-Docker/" target="_self">
+          
+          
+            
+          
+          Docker安装教程
+Docker官方手册 :https://docs.docker.com/
+
+
+
+系统环境
+此文章演示的版本为Linux版本,系统为CentOS 7,官方手册明确说明:
+​    若要在CentOS上安装Docker,则需要一个CentOS 7的维护版本。不支持或未测试存档版本。
+
+123456789101112131415161718#系统版本信息[root@localhos
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-07-05 18:29" pubdate>
+              2021-07-05
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/Study/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/Study/tags/Linux/">Linux</a>
+            
+              <a href="/Study/tags/Docker/">Docker</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/Study/post/Study-Note-for-Git/" target="_self">
+          <img src="https://github.com/MokYan/Figurebed/blob/master/The%20cover/git.png?raw=true" srcset="/Study/img/loading.gif" lazyload alt="Git保姆级教程 ：入门到入土">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/Study/post/Study-Note-for-Git/" target="_self">
+          Git保姆级教程 ：入门到入土
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/Study/post/Study-Note-for-Git/" target="_self">
+          
+          
+            
+          
+          1. Git的发展历史
+很多人都知道，Linus在1991年创建了开源的Linux，从此，Linux系统不断发展，已经成为最大的服务器系统软件了。Linus虽然创建了Linux，但Linux的壮大是靠全世界热心的志愿者参与的，这么多人在世界各地为Linux编写代码，那Linux的代码是如何管理的呢？事实是，在2002年以前，世界各地的志愿者把源代码文件通过diff的方式发给Linus，然后由Lin
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-07-05 18:10" pubdate>
+              2021-07-05
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/Study/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/Study/tags/Git/">Git</a>
+            
+              <a href="/Study/tags/Linux/">Linux</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/Study/js/events.js" ></script>
+<script  src="/Study/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/Study/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/Study/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/Study/js/boot.js" ></script>
+
+
+</body>
+</html>

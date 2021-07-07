@@ -1,0 +1,539 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/Study/img/favicon.png">
+  <link rel="icon" href="/Study/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="M0kY4n">
+  <meta name="keywords" content="">
+  
+  <title>SSH-私钥泄露 - M0kY4n&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/Study/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/Study/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"mokyan.github.io","root":"/Study/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/Study/js/utils.js" ></script>
+  <script  src="/Study/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/Study/">&nbsp;<strong>MokYan</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Study/">
+                <i class="iconfont icon-home-fill"></i>
+                主页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Study/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Study/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Study/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Study/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/Study/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="SSH-私钥泄露">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-07-06 17:52" pubdate>
+        July 6, 2021 pm
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      567 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      7
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">SSH-私钥泄露</h1>
+            
+            <div class="markdown-body">
+              <h2 id="0x00-环境配置"><a href="#0x00-环境配置" class="headerlink" title="0x00 环境配置"></a>0x00 环境配置</h2><ol>
+<li>   SSH-私钥泄露靶机</li>
+<li>   Kali 攻击机</li>
+<li>   靶机与攻击机处于同一网段</li>
+</ol>
+<h2 id="0x01-信息收集"><a href="#0x01-信息收集" class="headerlink" title="0x01 信息收集"></a>0x01 信息收集</h2><ol>
+<li><p>寻找靶机IP</p>
+<p>可以使用<code>netdiscover</code>或者 <code>nmap</code>进行IP扫描</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">netdiscover 10.112.132.0/24<br>nmap 10.112.132.0/24<br></code></pre></td></tr></table></figure></li>
+</ol>
+<ol start="2">
+<li><p>扫描服务</p>
+<p>因为是使用了nmap进行了扫描IP , 所以顺便把服务也一起扫描了</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">nmap -A -T4 10.112.132.16<br></code></pre></td></tr></table></figure>
+
+<p><img src="https://github.com/MokYan/Figurebed/blob/master/drone/SSH-Server/SSH-%20private%20key%20is%20eaked/nmap.jpg?raw=true" srcset="/Study/img/loading.gif" lazyload alt="nmap.jpg"></p>
+</li>
+</ol>
+<ol start="3">
+<li><p>目录扫描</p>
+<p>从nmap扫描结果得知 , 一共存在3个端口 22(SSH) , 80(HTTP) , 31337(ELIET) , 在nmap 综合扫描选项扫描靶机 , 能发现 31337也是运行Http服务 , 对两个Http服务的端口进行目录扫描 , 80结果为空 , 31337结果发现<code>.ssh</code>文件夹</p>
+<p><img src="https://github.com/MokYan/Figurebed/blob/master/drone/SSH-Server/SSH-%20private%20key%20is%20eaked/dirsearch.jpg?raw=true" srcset="/Study/img/loading.gif" lazyload alt="dirsearch"></p>
+<p>robots.txt 有个/taxes目录 , 访问得到一个Flag</p>
+<p><img src="https://github.com/MokYan/Figurebed/blob/master/drone/SSH-Server/SSH-%20private%20key%20is%20eaked/robots.txt.jpg?raw=true" srcset="/Study/img/loading.gif" lazyload alt="robots.txt"></p>
+<p><img src="https://github.com/MokYan/Figurebed/blob/master/drone/SSH-Server/SSH-%20private%20key%20is%20eaked/Flag1.jpg?raw=true" srcset="/Study/img/loading.gif" lazyload alt="Flag1"></p>
+<p>访问<code>.ssh</code>下载三个文件</p>
+<p>​    a.    authorized_keys - 公钥</p>
+<p>​    b.    id_rsa - 私钥</p>
+<p>​    c.    id_rsa.pub - 私钥证书</p>
+</li>
+</ol>
+<h2 id="0x02-SSH连接"><a href="#0x02-SSH连接" class="headerlink" title="0x02 SSH连接"></a>0x02 SSH连接</h2><p>关于SSH的一些知识-转自<code>TelCruel</code> <a target="_blank" rel="noopener" href="https://telcruel.gitee.io/2019/09/21/SSH/">传送门</a></p>
+<ol>
+<li><p>公钥</p>
+<p>查看公钥发现用户名为<code>simon</code></p>
+<p><img src="https://github.com/MokYan/Figurebed/blob/master/drone/SSH-Server/SSH-%20private%20key%20is%20eaked/autorized_key.jpg?raw=true" srcset="/Study/img/loading.gif" lazyload alt="autorized_keys"></p>
+</li>
+</ol>
+<ol start="2">
+<li><p>私钥</p>
+<p>尝试使用公钥登录 , 提示没权限</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">ssh -i id_rsa simon@10.112.132.16<br></code></pre></td></tr></table></figure>
+
+<p><img src="https://github.com/MokYan/Figurebed/blob/master/drone/SSH-Server/SSH-%20private%20key%20is%20eaked/Permission_Denied.jpg?raw=true" srcset="/Study/img/loading.gif" lazyload alt="Permission_Denied"></p>
+<p>​</p>
+<p>修改权限 , 再次尝试登录 , 提示需要密码</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">chmod 600 id_rsa<br>ssh -i id_rsa simon@10.112.132.16<br></code></pre></td></tr></table></figure>
+
+<p><img src="https://github.com/MokYan/Figurebed/blob/master/drone/SSH-Server/SSH-%20private%20key%20is%20eaked/SSH_login_not_password.jpg?raw=true" srcset="/Study/img/loading.gif" lazyload alt="SSH_login_not_password"></p>
+<p>​</p>
+</li>
+<li><p>破解私钥</p>
+<p>使用<code>ssh2john</code>对 id_rsa 秘钥信息转为 John可以识别的信息 , 让使用zcat 破解isacrack 信息</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">/usr/share/john/ssh2john.py id_rsa &gt; isacrack<br>zcat /usr/share/wordlists/rockyou.txt.gz | john --pipe --rules isacrack<br></code></pre></td></tr></table></figure>
+
+<p><img src="https://github.com/MokYan/Figurebed/blob/master/drone/SSH-Server/SSH-%20private%20key%20is%20eaked/Zcat&Join.jpg?raw=true" srcset="/Study/img/loading.gif" lazyload alt="Zcat&amp;Join"></p>
+<p>破解出密码为: <code>starwars</code> , 再次登录</p>
+<p><img src="https://github.com/MokYan/Figurebed/blob/master/drone/SSH-Server/SSH-%20private%20key%20is%20eaked/SSH_login.jpg?raw=true" srcset="/Study/img/loading.gif" lazyload alt="SSH_login"></p>
+</li>
+</ol>
+<ol start="4">
+<li><p>信息收集</p>
+<p>在root 目录下 有个 <code>flag.txt</code>与 ‘read_message.c’  , flag.txt没权限打开 , read_message.c查看发现第二个flag  , 且提示我们需要执行这个源码</p>
+<p><img src="https://github.com/MokYan/Figurebed/blob/master/drone/SSH-Server/SSH-%20private%20key%20is%20eaked/Flag2.jpg?raw=true" srcset="/Study/img/loading.gif" lazyload alt="Flag2"></p>
+<p>查找已经编译的程序,并执行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shel">find / -name &quot;*read_message*&quot; 2&gt;/dev/null<br></code></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="0x03-提权"><a href="#0x03-提权" class="headerlink" title="0x03 提权"></a>0x03 提权</h2><p>​    这个程序是一个简单的溢出攻击(然而我不会 (汗颜)),直接照搬<code>TelCruel</code>的WP了</p>
+<pre><code> 这里因为gets（buf）没有限制读取的长度，但是buf[]这个数组只能储存20个字符，那么超过20个字符的就会存入缓冲区，将后面的内容覆盖。然后当执行到execve的时候原来要执行program[]内的字符，被覆盖后就可以利用了。所以只要输入SimonAAAAAAAAAAAAAAA/bin/sh,即可进入root的shell
+</code></pre>
+<p>​    执行后 , 权限提升至root , 查看flag.txt 得到 第三个Flag</p>
+<p>​    <img src="https://github.com/MokYan/Figurebed/blob/master/drone/SSH-Server/SSH-%20private%20key%20is%20eaked/flag3.jpg?raw=true" srcset="/Study/img/loading.gif" lazyload alt="Flag3"></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/Study/categories/%E9%9D%B6%E6%9C%BA%E7%BB%83%E4%B9%A0/">靶机练习</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/Study/tags/Web%E5%AE%89%E5%85%A8/">Web安全</a>
+                    
+                      <a class="hover-with-bg" href="/Study/tags/SSH/">SSH</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/Study/post/Study-Note-Nmap/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Nmap 学习手册</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/Study/post/SSH-Service-penetrates-the-root-host/">
+                        <span class="hidden-mobile">SSH-服务渗透root主机</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="gitalk-container"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#gitalk-container', function() {
+      Fluid.utils.createCssLink('/Study/css/gitalk.css')
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js', function() {
+        var options = Object.assign(
+          {"clientID":"33314f7248b5c9af3dd7","clientSecret":"a00f05259046ad817d64c59027a0388812fe40b7","repo":"MokYan.github.io","owner":"MokYan","admin":["MokYan"],"language":"zh-CN","labels":["Gitalk"],"perPage":10,"pagerDirection":"last","distractionFreeMode":false,"createIssueManually":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token"},
+          {
+            id: '7e33d9d98f1eb1adaf05ff7f2eee4407'
+          }
+        )
+        var gitalk = new Gitalk(options);
+        gitalk.render('gitalk-container');
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/Study/js/events.js" ></script>
+<script  src="/Study/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/Study/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/Study/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/Study/js/boot.js" ></script>
+
+
+</body>
+</html>

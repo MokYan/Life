@@ -1,0 +1,644 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/Study/img/favicon.png">
+  <link rel="icon" href="/Study/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="M0kY4n">
+  <meta name="keywords" content="">
+  
+  <title>Docker保姆级教程：从入门到入土 - M0kY4n&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/Study/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/Study/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"mokyan.github.io","root":"/Study/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/Study/js/utils.js" ></script>
+  <script  src="/Study/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/Study/">&nbsp;<strong>MokYan</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Study/">
+                <i class="iconfont icon-home-fill"></i>
+                主页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Study/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Study/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Study/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Study/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/Study/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Docker保姆级教程：从入门到入土">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-07-05 18:29" pubdate>
+        July 5, 2021 pm
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.9k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      42
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Docker保姆级教程：从入门到入土</h1>
+            
+            <div class="markdown-body">
+              <h1 id="Docker安装教程"><a href="#Docker安装教程" class="headerlink" title="Docker安装教程"></a>Docker安装教程</h1><blockquote>
+<p>Docker官方手册 :<a target="_blank" rel="noopener" href="https://docs.docker.com/">https://docs.docker.com/</a></p>
+</blockquote>
+<br>
+
+<h2 id="系统环境"><a href="#系统环境" class="headerlink" title="系统环境"></a>系统环境</h2><blockquote>
+<p>此文章演示的版本为Linux版本,系统为CentOS 7,官方手册明确说明:</p>
+<p>​    若要在CentOS上安装Docker,则需要一个CentOS 7的维护版本。不支持或未测试存档版本。</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash">系统版本信息</span><br>[root@localhost ~]# cat /etc/os-release<br>NAME=&quot;CentOS Linux&quot;<br>VERSION=&quot;7 (Core)&quot;<br>ID=&quot;centos&quot;<br>ID_LIKE=&quot;rhel fedora&quot;<br>VERSION_ID=&quot;7&quot;<br>PRETTY_NAME=&quot;CentOS Linux 7 (Core)&quot;<br>ANSI_COLOR=&quot;0;31&quot;<br>CPE_NAME=&quot;cpe:/o:centos:centos:7&quot;<br>HOME_URL=&quot;https://www.centos.org/&quot;<br>BUG_REPORT_URL=&quot;https://bugs.centos.org/&quot;<br><br>CENTOS_MANTISBT_PROJECT=&quot;CentOS-7&quot;<br>CENTOS_MANTISBT_PROJECT_VERSION=&quot;7&quot;<br>REDHAT_SUPPORT_PRODUCT=&quot;centos&quot;<br>REDHAT_SUPPORT_PRODUCT_VERSION=&quot;7&quot;<br><br></code></pre></td></tr></table></figure>
+
+<p>安装之前确保系统没有安装过旧版本的Docker,若有安装执行以下命令卸载旧版本的Docker</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">$</span><span class="bash"> sudo yum remove docker \</span><br><span class="bash">                  docker-client \</span><br><span class="bash">                  docker-client-latest \</span><br><span class="bash">                  docker-common \</span><br><span class="bash">                  docker-latest \</span><br><span class="bash">                  docker-latest-logrotate \</span><br><span class="bash">                  docker-logrotate \</span><br><span class="bash">                  docker-engine</span><br><br></code></pre></td></tr></table></figure>
+
+
+
+<br>
+<br>
+
+<h2 id="安装Docker"><a href="#安装Docker" class="headerlink" title="安装Docker"></a>安装Docker</h2><blockquote>
+<p>安装Docker之前,需要设置Docker存储库</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash">设置存储库需安装yum-utils包</span><br>yum install -y yum-utils<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash">设置存储库 , 默认为官方国外地址!!!,若网络状态不好请自行更换国内源</span><br>yum-config-manager \<br>    --add-repo \<br>    https://download.docker.com/linux/centos/docker-ce.repo    <br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash">更新源</span><br>yum makecache fast<br><br></code></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>安装Docker</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash">安装最新的Docker</span><br>yum -y install docker-ce docker-ce-cli containerd.io<br><br></code></pre></td></tr></table></figure>
+
+<br>
+<br>
+
+<h2 id="启动-amp-运行-Docker"><a href="#启动-amp-运行-Docker" class="headerlink" title="启动&amp;运行 Docker"></a>启动&amp;运行 Docker</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash">启动Docker</span><br>systemctl start docker<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash">运行Hello-world镜像来测试是否正确安装了Docker</span><br>docker run hello-world<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash">显示以下信息则正确安装了Docker</span><br><br>Hello from Docker!<br>This message shows that your installation appears to be working correctly.<br><br>To generate this message, Docker took the following steps:<br> 1. The Docker client contacted the Docker daemon.<br> 2. The Docker daemon pulled the &quot;hello-world&quot; image from the Docker Hub.<br>    (amd64)<br> 3. The Docker daemon created a new container from that image which runs the<br>    executable that produces the output you are currently reading.<br> 4. The Docker daemon streamed that output to the Docker client, which sent it<br>    to your terminal.<br><br>To try something more ambitious, you can run an Ubuntu container with:<br><span class="hljs-meta"> $</span><span class="bash"> docker run -it ubuntu bash</span><br><br>Share images, automate workflows, and more with a free Docker ID:<br> https://hub.docker.com/<br><br>For more examples and ideas, visit:<br> https://docs.docker.com/get-started/<br><br></code></pre></td></tr></table></figure>
+
+
+<br>
+<br>
+
+<h2 id="卸载Docker"><a href="#卸载Docker" class="headerlink" title="卸载Docker"></a>卸载Docker</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash">卸载Docker</span><br>yum remove docker-ce docker-ce-cli containerd.io<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash">删除主机上的残余文件(镜像,容器,配置文件等等)</span><br>rm -rf /var/lib/docker<br></code></pre></td></tr></table></figure>
+
+<br>
+<br>
+
+<h1 id="配置国内镜像加速"><a href="#配置国内镜像加速" class="headerlink" title="配置国内镜像加速"></a>配置国内镜像加速</h1><blockquote>
+<p>使用国内镜像加速能更快的下载镜像,这里以腾讯云为例,其他运行商请自行找到各自的文档进行配置</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash">打开 /etc/docker/daemon.json 配置文件(这个文件是本身是不存在的,只是通过vim创建-编辑-保存-生成)</span><br>vim /etc/docker/daemon.json<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash">进入vim的编辑模式,添加一下内容,并保存</span><br>&#123;<br>&quot;registry-mirrors&quot;: [&quot;https://mirror.ccs.tencentyun.com&quot;]<br>&#125;<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash">重新加载服务配置文件</span><br>systemctl daemon-reload<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash">重启Docker进程</span><br>systemctl restart docker<br></code></pre></td></tr></table></figure>
+
+<br>
+<br>
+
+<h1 id="Docker命令笔记"><a href="#Docker命令笔记" class="headerlink" title="Docker命令笔记"></a>Docker命令笔记</h1><br>
+
+<h2 id="Docker-学习资源"><a href="#Docker-学习资源" class="headerlink" title="Docker 学习资源"></a>Docker 学习资源</h2><blockquote>
+<p>Docker官方命令手册 :<a target="_blank" rel="noopener" href="https://docs.docker.com/reference/">https://docs.docker.com/reference/</a></p>
+<p>菜鸟教程命令手册:<a target="_blank" rel="noopener" href="https://www.runoob.com/docker/docker-command-manual.html">https://www.runoob.com/docker/docker-command-manual.html</a></p>
+<p>B站<a target="_blank" rel="noopener" href="https://space.bilibili.com/95256449">遇见狂神说</a>UP主视频教学:<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1og4y1q7M4">https://www.bilibili.com/video/BV1og4y1q7M4</a></p>
+</blockquote>
+<br>
+<br>
+
+<h2 id="Docker镜像命令"><a href="#Docker镜像命令" class="headerlink" title="Docker镜像命令"></a>Docker镜像命令</h2><br>
+
+<h3 id="docker-images-查看本地镜像"><a href="#docker-images-查看本地镜像" class="headerlink" title="docker images    查看本地镜像"></a>docker images    查看本地镜像</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs shell">docker images [OPTIONS] [REPOSITORY[:TAG]]<br>-a	列出本地所有镜像<br>-q	列出本地所有镜像且只显示IMAGE ID<br><br>docker images -a<br><br>REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE<br>hello-world         latest              bf756fb1ae65        5 months ago        13.3kB<br><br>docker images -a<br>bf756fb1ae65<br><br>docker images hello-world<br>REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE<br>hello-world         latest              bf756fb1ae65        5 months ago        13.3kB<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash">参数说明</span><br>REPOSITORY			镜像的名字<br>TAG					镜像的标签<br>IMAGE ID			镜像的ID值<br>CREATED				镜像的创建时间<br>SIZE				镜像的大小<br><br></code></pre></td></tr></table></figure>
+<br>
+
+<h3 id="docker-search-从Docker-Hub查找镜像"><a href="#docker-search-从Docker-Hub查找镜像" class="headerlink" title="docker search    从Docker Hub查找镜像"></a>docker search    从Docker Hub查找镜像</h3><blockquote>
+<p>Docker Hub地址:<a target="_blank" rel="noopener" href="https://hub.docker.com/">https://hub.docker.com/</a></p>
+</blockquote>
+<p>从Docker Hub中搜索mysql的结果</p>
+<p><img src="https://github.com/MokYan/Figurebed/blob/master/docker/Search.png?raw=true" srcset="/Study/img/loading.gif" lazyload alt="Search.png"></p>
+<p>通过docker search搜索mysql的结果</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs shell"><br>docker search mysql<br><br>NAME         		DESCRIPTION            			STARS       OFFICIAL        AUTOMATED<br>mysql        		MySQL is a widely used...   	9666        [OK]                <br>mariadb      		MariaDB is a community-devel.. 	3517      	[OK]                <br>mysql/mysql-server  Optimized MySQL Server Docker.. 705                         [OK]<br>centos/mysql-57-... MySQL 5.7 SQL database server   77                                      <br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash">通过--filter筛选结果</span><br>docker search mysql --filter=STARS=3000<br>NAME         		DESCRIPTION            			STARS       OFFICIAL        AUTOMATED<br>mysql        		MySQL is a widely used...   	9666        [OK]                <br>mariadb      		MariaDB is a community-devel.. 	3517      	[OK]                <br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash">参数说明</span><br>NAME				镜像的名字<br>DESCRIPTION			镜像的描述<br>STARS				类似于GitHub里面的star,表示点赞,喜欢<br>OFFICIAL			是否为docker官方发布<br>AUTOMATED			是否自动搭建<br><br></code></pre></td></tr></table></figure>
+
+<br>
+
+<h3 id="docker-pull-从Docker-Hub下载镜像"><a href="#docker-pull-从Docker-Hub下载镜像" class="headerlink" title="docker pull 从Docker Hub下载镜像"></a>docker pull 从Docker Hub下载镜像</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><code class="hljs shell">docker pull [OPTIONS] NAME[:TAG|@DIGEST]<br>-a	拉取所有包含[NAME]的镜像<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash">默认下载最新版</span><br>docker pull mysql<br><br>Using default tag: latest<br>latest: Pulling from library/mysql<br>8559a31e96f4: Pull complete<br>d51ce1c2e575: Pull complete<br>c2344adc4858: Pull complete<br>fcf3ceff18fc: Pull complete<br>16da0c38dc5b: Pull complete<br>b905d1797e97: Pull complete<br>4b50d1c6b05c: Pull complete<br>c75914a65ca2: Pull complete<br>1ae8042bdd09: Pull complete<br>453ac13c00a3: Pull complete<br>9e680cd72f08: Pull complete<br>a6b5dc864b6c: Pull complete<br>Digest: sha256:8b7b328a7ff6de46ef96bcf83af048cb00a1c86282bfca0cb119c84568b4caf6<br>Status: Downloaded newer image for mysql:latest<br>docker.io/library/mysql:latest<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash">指定版本下载,版本必须在Docker Hub存在</span><br>docker pull mysql:8.0<br>8.0: Pulling from library/mysql<br>Digest: sha256:8b7b328a7ff6de46ef96bcf83af048cb00a1c86282bfca0cb119c84568b4caf6<br>Status: Downloaded newer image for mysql:8.0<br>docker.io/library/mysql:8.0<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash">从镜像库拉取所有tag标签名的镜像</span><br>docker pull mysql -a<br><span class="hljs-meta">#</span><span class="bash">结果太多了,直接看本地镜像</span><br>docker images<br><br>REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE<br>mysql               8.0                 be0dbf01a0f3        2 weeks ago         541MB<br>mysql               latest              be0dbf01a0f3        2 weeks ago         541MB<br>mysql               5.5                 d404d78aa797        13 months ago       205MB<br>mysql               5.5.62              d404d78aa797        13 months ago       205MB<br>mysql               5.6.43              bc788a6a2745        15 months ago       256MB<br>mysql               5.6.42              27e29668a08a        18 months ago       256MB<br>mysql               5.5.61              d306c8812ec3        20 months ago       205MB<br>mysql               5.6.41              085b9b6ec8a9        20 months ago       256MB<br>mysql               5.5.60              2cd7ceff3e53        23 months ago       205MB<br>mysql               5.6.40              50328380b2b4        23 months ago       256MB<br>mysql               5.5.59              0da48351c371        2 years ago         205MB<br>mysql               5.6.39              079344ce5ebd        2 years ago         256MB<br>...<br><br></code></pre></td></tr></table></figure>
+
+<br>
+
+<h3 id="docker-rmi-删除本地镜像"><a href="#docker-rmi-删除本地镜像" class="headerlink" title="docker rmi    删除本地镜像"></a>docker rmi    删除本地镜像</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs shell">docker rmi [OPTIONS] IMAGE [IMAGE...]<br>-f	强制删除<br><br>docker images<br>REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE<br>mysql               latest              be0dbf01a0f3        2 weeks ago         541MB<br>hello-world         latest              bf756fb1ae65        5 months ago        13.3kB<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash">卸载本地镜像的mysql</span><br>docker rmi -f be0dbf01a0f3<br>docker rmi -f mysql<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash">卸载本地所有镜像(一个一个删除)</span><br>docker rmi -f mysql hello-world<br>docker rmi -f be0dbf01a0f3 bf756fb1ae65<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash">卸载本地所有镜像(通过$()传值删除)</span><br>docker rmi -f $(docker images -aq)<br><br></code></pre></td></tr></table></figure>
+
+<br>
+
+<h2 id="Docker容器命令"><a href="#Docker容器命令" class="headerlink" title="Docker容器命令"></a>Docker容器命令</h2><br>
+<br>
+
+<h3 id="docker-run-新建容器并启动"><a href="#docker-run-新建容器并启动" class="headerlink" title="docker run    新建容器并启动"></a>docker run    新建容器并启动</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs shell">docker run [OPTIONS] IMAGE [COMMAND] [ARG...]<br>--name=&quot;Name&quot;	为容器指定一个名称<br>-d				后台运行容器,并返回容器id<br>--it			以交互模式运行容器,为容器分配一个伪输入终端<br>-p				(小写p)指定容器的端口	格式为 -p 8080(宿主机端口):8080(容器端口)<br>-P				(大写p)随机指定端口<br>-v				挂载目录				格式为 -v /home/user(宿主机目录):/root/user(容器目录)<br><br>							匿名挂载 -v	容器内路径			  	 <br>							具名挂载 -v	卷名:容器内路径			<br>							指定路径挂载 -v	宿主机路径:容器内路径<br><br>							只读	在容器内路径后面加 &quot;:ro&quot;<br>							读写  在容器内路径后面加 &quot;:rw&quot;<br>-e				环境配置<br>--volumes-from	从另一个容器当中挂载容器中已经创建好的数据卷<br>							docker run -it --name docker02 --volumes-from docker01 centos<br>							运行容器docker02挂载到容器docker01上,实现更新数据在容器之间共享<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash">docker容器使用后台运行,就必须要有一个前台进程,否则docker发现没有应用就会停止容器</span><br></code></pre></td></tr></table></figure>
+
+<br>
+
+<h3 id="docker-ps-列出正在运行的容器信息"><a href="#docker-ps-列出正在运行的容器信息" class="headerlink" title="docker ps    列出正在运行的容器信息"></a>docker ps    列出正在运行的容器信息</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell">docker ps [OPTIONS]<br>-a		显示所有容器,包括历史容器<br>-n=Num	显示最近创建的&quot;n&quot;个容器<br>-q		显示容器的ID<br><br></code></pre></td></tr></table></figure>
+
+<br>
+
+<h3 id="docker退出容器"><a href="#docker退出容器" class="headerlink" title="docker退出容器"></a>docker退出容器</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">exit			#终止并退出容器<br>Ctrl + P + Q	#不终止并退出容器<br><br></code></pre></td></tr></table></figure>
+
+<br>
+
+<h3 id="docker-rm-删除容器"><a href="#docker-rm-删除容器" class="headerlink" title="docker rm    删除容器"></a>docker rm    删除容器</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs shell">docker rm [OPTIONS] CONTAINER [CONTAINER...]<br>-f		#强制删除一个运行中的容器<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash">删除容器</span><br>docker rm -f 8c7fefd9e698<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash">删除所有容器</span><br>docker rm -f $(docker ps -aq)<br>docker ps -a -q | xargs docker rm -f<br><br></code></pre></td></tr></table></figure>
+
+<br>
+
+<h3 id="docker-start-stop-restart-kill-启动-停止-重启-杀掉容器"><a href="#docker-start-stop-restart-kill-启动-停止-重启-杀掉容器" class="headerlink" title="docker start/stop/restart/kill        启动/停止/重启/杀掉容器"></a>docker start/stop/restart/kill        启动/停止/重启/杀掉容器</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell">docker start CONTAINER		:启动容器<br>docker stop CONTAINER		:停止容器<br>docker restart CONTAINER	:重启容器<br>docker kill CONTAINER		:杀掉容器<br><br></code></pre></td></tr></table></figure>
+
+<br>
+
+<h3 id="docker-logs-获取容器的日志"><a href="#docker-logs-获取容器的日志" class="headerlink" title="docker logs        获取容器的日志"></a>docker logs        获取容器的日志</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs sh">docker logs [OPTIONS] CONTAINER<br>-f			跟踪日志输出<br>-t			显示时间戳<br>--tail Num	列出最新Num调容器日志<br></code></pre></td></tr></table></figure>
+
+<br>
+
+<h3 id="Docker-top-查看容器中运行的进程信息"><a href="#Docker-top-查看容器中运行的进程信息" class="headerlink" title="Docker top        查看容器中运行的进程信息"></a>Docker top        查看容器中运行的进程信息</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">docker top [OPTIONS] CONTAINER [ps OPTIONS]<br></code></pre></td></tr></table></figure>
+
+<br>
+
+<h3 id="docker-inspect-获取容器-镜像的元数据"><a href="#docker-inspect-获取容器-镜像的元数据" class="headerlink" title="docker inspect        获取容器/镜像的元数据"></a>docker inspect        获取容器/镜像的元数据</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs shell">docker inspect [OPTIONS] NAME|ID [NAME|ID...]<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash">查看centos的元数据</span><br>docker inspect centos<br>[<br>    &#123;<br>        &quot;Id&quot;: &quot;sha256:831691599b88ad6cc2a4abbd0e89661a121aff14cfa289ad840fd3946f274f1f&quot;,<br>        &quot;RepoTags&quot;: [<br>            &quot;centos:latest&quot;<br>        ],<br>        &quot;RepoDigests&quot;: [<br>            &quot;centos@sha256:4062bbdd1bb0801b0aa38e0f83dece70fb7a5e9bce223423a68de2d8b784b43b&quot;<br>        ],<br>...<br></code></pre></td></tr></table></figure>
+
+<br>
+
+<h3 id="Docker-exec-进入已经运行的容器-重新分配终端"><a href="#Docker-exec-进入已经运行的容器-重新分配终端" class="headerlink" title="Docker exec        进入已经运行的容器(重新分配终端)"></a>Docker exec        进入已经运行的容器(重新分配终端)</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs shell">docker exec [OPTIONS] CONTAINER COMMAND [ARG...]<br>--it			以交互模式运行容器,为容器分配一个伪输入终端<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash">进入正在运行的Centos容器</span><br>docker exec -it 336cc1fb92bf /bin/bash<br><br><br></code></pre></td></tr></table></figure>
+
+<br>
+
+<h3 id="Docker-attach-连接到正在运行中的容器"><a href="#Docker-attach-连接到正在运行中的容器" class="headerlink" title="Docker attach        连接到正在运行中的容器"></a>Docker attach        连接到正在运行中的容器</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell">docker attach [OPTIONS] CONTAINER<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash">进入正在运行的Centos容器</span><br>docker attach 336cc1fb92bf<br></code></pre></td></tr></table></figure>
+
+<br>
+
+<h3 id="Docker-cp-容器与主机之间数据拷贝"><a href="#Docker-cp-容器与主机之间数据拷贝" class="headerlink" title="Docker cp         容器与主机之间数据拷贝"></a>Docker cp         容器与主机之间数据拷贝</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell">docker cp [OPTIONS] CONTAINER:SRC_PATH DEST_PATH|-<br><br><br>docker cp 336cc1fb92bf:/home/test.txt /<br>将容器里的/home/test.txt 拷贝到 宿主机的/目录上<br></code></pre></td></tr></table></figure>
+
+<br>
+
+<h3 id="Docker-commit-从容器创建一个新的镜像"><a href="#Docker-commit-从容器创建一个新的镜像" class="headerlink" title="Docker commit        从容器创建一个新的镜像"></a>Docker commit        从容器创建一个新的镜像</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs shell">docker commit [OPTIONS] CONTAINER [REPOSITORY[:TAG]]<br>-m :提交时的说明文字；<br>-a :提交的镜像作者；<br><br>创建一个镜像<br>docker commit -a=&quot;MokYan&quot; -m=&quot;add webapps app&quot; c97729657a71 tomcat-v1:1.0<br><br>docker images<br><br>REPOSITORY            TAG                 IMAGE ID            CREATED             SIZE<br>tomcat-v1             1.0              	  366d86150b16        19 seconds ago      652MB<br>tomcat                latest              6055d4d564e1        3 days ago          647MB<br><br></code></pre></td></tr></table></figure>
+
+<br>
+
+<h2 id="Docker-数据命令"><a href="#Docker-数据命令" class="headerlink" title="Docker 数据命令"></a>Docker 数据命令</h2><br>
+<br>
+
+<h3 id="docker-volume-管理docker容器挂载的卷"><a href="#docker-volume-管理docker容器挂载的卷" class="headerlink" title="docker volume        管理docker容器挂载的卷"></a>docker volume        管理docker容器挂载的卷</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs shell">Usage:	docker volume COMMAND<br><br>Commands:<br>  create      创建一个 volume<br>  inspect     查看一个或多个volume 的元数据<br>  ls          查看 volumes<br>  prune       删除所有未使用的本地 volumes<br>  rm          移出一个或多个 volumes<br><br><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>docker 默认在主机上会有一个特定的区域（<code>/var/lib/docker/volumes/</code>），该区域用来存放 volume。</li>
+<li>非 docker 进程不应该去修改该区域。</li>
+<li>volume 可以通过 <code>docker volume</code> 进行管理，如创建、删除等操作。</li>
+<li>volume 在生成的时候如果不指定名称，便会随机生成。</li>
+</ul>
+<br>
+
+<h3 id="docker-file"><a href="#docker-file" class="headerlink" title="docker file"></a>docker file</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><code class="hljs shell">使用 Dockerfile 定制镜像<br><br>1.	创建Docker file文件(名字随意)<br>	vim dockerfile1<br><br>2.	编辑docker file文件<br>	FROM centos<br>	VOLUME [&quot;volume01&quot;,&quot;volume02&quot;]<br>	CMD echo &quot;----end----&quot;<br>	CMD /bin/bash<br><br>3.	构建镜像<br>	docker build -f /home/docker-test-volume/dockerfile1 -t mokyan/centos:1.0 .<br>	Sending build context to Docker daemon  2.048kB<br>    Step 1/4 : FROM centos<br>     ---&gt; 831691599b88<br>    Step 2/4 : VOLUME [&quot;volume01&quot;,&quot;volume02&quot;]<br>     ---&gt; Running in 7aa721724f47<br>    Removing intermediate container 7aa721724f47<br>     ---&gt; 37cc8ddeb5ef<br>    Step 3/4 : CMD echo &quot;----end----&quot;<br>     ---&gt; Running in a00fd1594c00<br>    Removing intermediate container a00fd1594c00<br>     ---&gt; 976fefd5e341<br>    Step 4/4 : CMD /bin/bash<br>     ---&gt; Running in 3203befb485f<br>    Removing intermediate container 3203befb485f<br>     ---&gt; e03ef3a4bf68<br>    Successfully built e03ef3a4bf68<br>    Successfully tagged mokyan/centos:1.0<br><br>4.	查看镜像<br>	docker images<br>	REPOSITORY            TAG                 IMAGE ID            CREATED             SIZE<br>	mokyan/centos         1.0                 e03ef3a4bf68        16 seconds ago      215MB<br><br>注意:<br>	编辑docker file文件,里面的命令都是大写的<br>	构建镜像时,最后的点是上下文路径,所以上下文路径下不要放无用的文件，因为会一起打包发送给 docker 引擎，如果文件过多会造成过程缓慢。<br>	构建镜像时,-t后面接的名字不能存在大写,否则会报错<br>	构建镜像时,&quot;#&quot;表示注释<br><br></code></pre></td></tr></table></figure>
+
+<br>
+
+<h3 id="docker-file-指令"><a href="#docker-file-指令" class="headerlink" title="docker file 指令"></a>docker file 指令</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs shell">FROM			#基础镜像,基于这个镜像构建<br>MAINTAINER		#构建镜像的作者信息<br>RUN				#镜像构建时需要运行的命令<br>ADD				#添加内容<br>WORKDIR			#镜像的工作目录<br>VOLUME			#挂载的目录<br>EXPOSE			#暴露端口配置<br>CMD				#容器启动时需要运行的命令,只有最后一个生效,可被替换<br>ENTRYPOINT		#容器启动时需要运行的命令,可以追加命令<br>ENV				#构建的时候设置环境变量<br></code></pre></td></tr></table></figure>
+
+<br>
+
+<h2 id="Docker-网络命令"><a href="#Docker-网络命令" class="headerlink" title="Docker 网络命令"></a>Docker 网络命令</h2><br>
+<br>
+
+<h3 id="docker-network"><a href="#docker-network" class="headerlink" title="docker network"></a>docker network</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs shell">docker network --help<br><br>Usage:	docker network COMMAND<br><br>Manage networks<br><br>Commands:<br>  connect     Connect a container to a network<br>  create      Create a network<br>  disconnect  Disconnect a container from a network<br>  inspect     Display detailed information on one or more networks<br>  ls          List networks<br>  prune       Remove all unused networks<br>  rm          Remove one or more networks<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash">查看docker 网络适配器模式</span><br>docker network ls<br><br>NETWORK ID          NAME                DRIVER              SCOPE<br>8c61b8c764f6        bridge              bridge              local<br>0fb588f08568        host                host                local<br>58d6ff1f424f        none                null                local<br>bridge		桥接模式<br>host		共享宿主机网络模式<br>none		不配置网络<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash">创建docker 网络适配器 test-net</span><br>docker network create --driver bridge --subnet 192.168.0.0/16 --gateway 192.168.0.1 test-net<br>--driver 		网络适配器模式,默认为bridge<br>--subnet		子网掩码配置<br>--gateway		网关配置<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash">删除docker 网络适配器 test-net</span><br>docker network rm test-net<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash">为容器添加网络适配器,tomcat01_birdge的网络适配器为默认docker01</span><br>docker network connect test-net tomcat01_birdge<br><br><br><br></code></pre></td></tr></table></figure>
+
+<br>
+
+<h2 id="Docker-其他命令"><a href="#Docker-其他命令" class="headerlink" title="Docker 其他命令"></a>Docker 其他命令</h2><br>
+<br>
+
+<h3 id="docker-info-显示-Docker-系统信息，包括镜像和容器数"><a href="#docker-info-显示-Docker-系统信息，包括镜像和容器数" class="headerlink" title="docker info        显示 Docker 系统信息，包括镜像和容器数"></a>docker info        显示 Docker 系统信息，包括镜像和容器数</h3><br>
+
+<h3 id="docker-version-显示-Docker-版本信息"><a href="#docker-version-显示-Docker-版本信息" class="headerlink" title="docker version        显示 Docker 版本信息"></a>docker version        显示 Docker 版本信息</h3><br>
+
+<h3 id="docker-stats-显示Docker容器占用系统资源情况"><a href="#docker-stats-显示Docker容器占用系统资源情况" class="headerlink" title="docker stats        显示Docker容器占用系统资源情况"></a>docker stats        显示Docker容器占用系统资源情况</h3><br>
+
+<h3 id="docker-login-登录Docker"><a href="#docker-login-登录Docker" class="headerlink" title="docker login        登录Docker"></a>docker login        登录Docker</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">docker login -u &quot;你的用户名&quot; -p &quot;你的密码&quot;<br></code></pre></td></tr></table></figure>
+<br>
+
+<h3 id="docker-logout-退出Docker"><a href="#docker-logout-退出Docker" class="headerlink" title="docker logout        退出Docker"></a>docker logout        退出Docker</h3>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/Study/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/Study/tags/Linux/">Linux</a>
+                    
+                      <a class="hover-with-bg" href="/Study/tags/Docker/">Docker</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/Study/post/XSS-Exercise-1/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">XSS弹窗练习 ：xss.haozi.me</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/Study/post/Study-Note-for-Git/">
+                        <span class="hidden-mobile">Git保姆级教程 ：入门到入土</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="gitalk-container"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#gitalk-container', function() {
+      Fluid.utils.createCssLink('/Study/css/gitalk.css')
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js', function() {
+        var options = Object.assign(
+          {"clientID":"33314f7248b5c9af3dd7","clientSecret":"a00f05259046ad817d64c59027a0388812fe40b7","repo":"MokYan.github.io","owner":"MokYan","admin":["MokYan"],"language":"zh-CN","labels":["Gitalk"],"perPage":10,"pagerDirection":"last","distractionFreeMode":false,"createIssueManually":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token"},
+          {
+            id: 'b2bded6593eae4246a1798a461342524'
+          }
+        )
+        var gitalk = new Gitalk(options);
+        gitalk.render('gitalk-container');
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/Study/js/events.js" ></script>
+<script  src="/Study/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/Study/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/Study/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/Study/js/boot.js" ></script>
+
+
+</body>
+</html>
