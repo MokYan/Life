@@ -1,0 +1,593 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/Life/img/favicon.png">
+  <link rel="icon" href="/Life/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="M0kY4n">
+  <meta name="keywords" content="">
+  
+  <title>Windows 全新终端体验 —— Windows Terminal 安装与美化 - M0kY4n&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/Life/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/Life/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"mokyan.github.io","root":"/Life/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/Life/js/utils.js" ></script>
+  <script  src="/Life/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/Life/">&nbsp;<strong>MokYan</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Life/">
+                <i class="iconfont icon-home-fill"></i>
+                主页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Life/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Life/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Life/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Life/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/Life/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Windows 全新终端体验 —— Windows Terminal 安装与美化">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-07-08 00:47" pubdate>
+        July 8, 2021 am
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      955 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      14
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Windows 全新终端体验 —— Windows Terminal 安装与美化</h1>
+            
+            <div class="markdown-body">
+              <h1 id="Windows-Terminal安装及美化"><a href="#Windows-Terminal安装及美化" class="headerlink" title="Windows Terminal安装及美化"></a>Windows Terminal安装及美化</h1><br>
+
+
+<h2 id="1-下载Windows-Terminal"><a href="#1-下载Windows-Terminal" class="headerlink" title="1.下载Windows Terminal"></a>1.下载Windows Terminal</h2><p>直接去电脑自带的Microsoft Store搜索下载<br><br></p>
+<h2 id="2-下载字体"><a href="#2-下载字体" class="headerlink" title="2.下载字体"></a>2.下载字体</h2><blockquote>
+<p>Fira Code | 一个程序员专用字体</p>
+</blockquote>
+<p>Fira 是 Mozilla 主推的字体系列，Fira Code 是基于 Fira Mono 等宽字体的一个扩展，主要特点是加入了编程连字特性（ligatures）。</p>
+<p>Fira Code 就是利用这个特性对编程中的常用符号进行优化，比如把输入的「!=」直接显示成「≠」或者把「&gt;=」变成「≥ 」等等，以此来提高代码的可读性。</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/tonsky/FiraCode/releases">下载传送门</a><br><br></p>
+<h2 id="3-安装字体"><a href="#3-安装字体" class="headerlink" title="3.安装字体"></a>3.安装字体</h2><p>把下载的压缩包,解压 进入ttf文件夹,全选右击为所有用户安装<br>[<img src="https://github.com/MokYan/Figurebed/blob/master/Terminal/Install-font.png?raw=true" srcset="/Life/img/loading.gif" lazyload alt="安装字体"><br><br></p>
+<h2 id="4-安装PowerShell-Core"><a href="#4-安装PowerShell-Core" class="headerlink" title="4.安装PowerShell Core"></a>4.安装PowerShell Core</h2><p>PowerShell Core是跨平台的（Windows，Linux和macOS）自动化和配置工具/框架，可与您的现有工具配合使用，并针对处理结构化数据（例如JSON，CSV，XML等），REST API进行了优化。和对象模型。它包括命令行外壳，关联的脚本语言和用于处理cmdlet的框架。</p>
+<p><font color="green">这个PowerShell Core和你电脑自带的那个又丑又慢,提示还看不懂的Windows PowerShell不是同一个东西</font><br><a target="_blank" rel="noopener" href="https://github.com/PowerShell/PowerShell/releases">下载传送门</a><br><br></p>
+<h2 id="5-配置终端"><a href="#5-配置终端" class="headerlink" title="5.配置终端"></a>5.配置终端</h2><p>打开Windows Terminal , 进入设置 , 打开JSON文件</p>
+<div class="code-wrapper"><pre><code class="hljs json"><span class="hljs-string">&quot;profiles&quot;</span>:
+&#123;
+    <span class="hljs-attr">&quot;defaults&quot;</span>:
+    &#123;
+        <span class="hljs-comment">// Put settings here that you want to apply to all profiles.</span>
+    &#125;,
+    <span class="hljs-attr">&quot;list&quot;</span>:
+    [
+        &#123;
+            <span class="hljs-comment">// Make changes here to the powershell.exe profile.</span>
+            <span class="hljs-attr">&quot;guid&quot;</span>: <span class="hljs-string">&quot;&#123;61c54bbd-c2c6-5271-96e7-009a87ff44bf&#125;&quot;</span>,
+            <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;Windows PowerShell&quot;</span>,
+            <span class="hljs-attr">&quot;commandline&quot;</span>: <span class="hljs-string">&quot;powershell.exe&quot;</span>,
+            <span class="hljs-attr">&quot;hidden&quot;</span>: <span class="hljs-literal">false</span>
+        &#125;,
+        &#123;
+            <span class="hljs-comment">// Make changes here to the cmd.exe profile.</span>
+            <span class="hljs-attr">&quot;guid&quot;</span>: <span class="hljs-string">&quot;&#123;0caa0dad-35be-5f56-a8ff-afceeeaa6101&#125;&quot;</span>,
+            <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;命令提示符&quot;</span>,
+            <span class="hljs-attr">&quot;commandline&quot;</span>: <span class="hljs-string">&quot;cmd.exe&quot;</span>,
+            <span class="hljs-attr">&quot;hidden&quot;</span>: <span class="hljs-literal">false</span>
+        &#125;,
+        &#123;
+            <span class="hljs-attr">&quot;guid&quot;</span>: <span class="hljs-string">&quot;&#123;574e775e-4f2a-5b96-ac1e-a2962a402336&#125;&quot;</span>,
+            <span class="hljs-attr">&quot;hidden&quot;</span>: <span class="hljs-literal">false</span>,
+            <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;PowerShell&quot;</span>,
+            <span class="hljs-attr">&quot;source&quot;</span>: <span class="hljs-string">&quot;Windows.Terminal.PowershellCore&quot;</span>,
+            <span class="hljs-attr">&quot;commandline&quot;</span>: <span class="hljs-string">&quot;C:/Program Files/PowerShell/7/pwsh.exe -nologo&quot;</span>,
+            <span class="hljs-attr">&quot;startingDirectory&quot;</span>: <span class="hljs-string">&quot;.&quot;</span>,
+            <span class="hljs-attr">&quot;fontFace&quot;</span>: <span class="hljs-string">&quot;Fira Code&quot;</span>,
+            <span class="hljs-attr">&quot;fontSize&quot;</span>: <span class="hljs-number">11</span>,
+            <span class="hljs-attr">&quot;historySize&quot;</span>: <span class="hljs-number">9001</span>,
+            <span class="hljs-attr">&quot;padding&quot;</span>: <span class="hljs-string">&quot;5, 5, 20, 25&quot;</span>,
+            <span class="hljs-attr">&quot;snapOnInput&quot;</span>: <span class="hljs-literal">true</span>,
+            <span class="hljs-attr">&quot;useAcrylic&quot;</span>: <span class="hljs-literal">true</span>,
+            <span class="hljs-attr">&quot;acrylicOpacity&quot;</span> : <span class="hljs-number">0.4</span>,
+            <span class="hljs-attr">&quot;colorScheme&quot;</span>: <span class="hljs-string">&quot;AdventureTime&quot;</span>,
+            <span class="hljs-attr">&quot;backgroundImageOpacity&quot;</span>: <span class="hljs-number">0.6</span>,
+
+        &#125;,
+        &#123;
+            <span class="hljs-attr">&quot;guid&quot;</span>: <span class="hljs-string">&quot;&#123;b453ae62-4e3d-5e58-b989-0a998ec441b8&#125;&quot;</span>,
+            <span class="hljs-attr">&quot;hidden&quot;</span>: <span class="hljs-literal">false</span>,
+            <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;Azure Cloud Shell&quot;</span>,
+            <span class="hljs-attr">&quot;source&quot;</span>: <span class="hljs-string">&quot;Windows.Terminal.Azure&quot;</span>
+        &#125;
+    ]
+&#125;,
+<span class="hljs-string">&quot;schemes&quot;</span>: [
+  &#123;
+       <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;AdventureTime&quot;</span>,
+       <span class="hljs-attr">&quot;black&quot;</span>: <span class="hljs-string">&quot;#050404&quot;</span>,
+       <span class="hljs-attr">&quot;red&quot;</span>: <span class="hljs-string">&quot;#bd0013&quot;</span>,
+       <span class="hljs-attr">&quot;green&quot;</span>: <span class="hljs-string">&quot;#4ab118&quot;</span>,
+       <span class="hljs-comment">// 时间的颜色</span>
+       <span class="hljs-attr">&quot;yellow&quot;</span>: <span class="hljs-string">&quot;#d298e2&quot;</span>,
+       <span class="hljs-comment">// 目录的颜色</span>
+       <span class="hljs-attr">&quot;blue&quot;</span>: <span class="hljs-string">&quot;#a2d7e2&quot;</span>,
+       <span class="hljs-attr">&quot;purple&quot;</span>: <span class="hljs-string">&quot;#cec2ff&quot;</span>,
+       <span class="hljs-attr">&quot;cyan&quot;</span>: <span class="hljs-string">&quot;#9ccabf&quot;</span>,
+       <span class="hljs-attr">&quot;white&quot;</span>: <span class="hljs-string">&quot;#f8dcc0&quot;</span>,
+       <span class="hljs-comment">//参数的颜色</span>
+       <span class="hljs-attr">&quot;brightBlack&quot;</span>: <span class="hljs-string">&quot;#c0d8f8&quot;</span>,
+       <span class="hljs-attr">&quot;brightRed&quot;</span>: <span class="hljs-string">&quot;#fc5f5a&quot;</span>,
+       <span class="hljs-comment">// &gt; 的颜色</span>
+       <span class="hljs-attr">&quot;brightGreen&quot;</span>: <span class="hljs-string">&quot;#9eff6e&quot;</span>,
+       <span class="hljs-comment">//命令的颜色</span>
+       <span class="hljs-attr">&quot;brightYellow&quot;</span>: <span class="hljs-string">&quot;#efc11a&quot;</span>,
+       <span class="hljs-attr">&quot;brightBlue&quot;</span>: <span class="hljs-string">&quot;#1997c6&quot;</span>,
+       <span class="hljs-attr">&quot;brightPurple&quot;</span>: <span class="hljs-string">&quot;#9b5953&quot;</span>,
+       <span class="hljs-attr">&quot;brightCyan&quot;</span>: <span class="hljs-string">&quot;#c8faf4&quot;</span>,
+       <span class="hljs-attr">&quot;brightWhite&quot;</span>: <span class="hljs-string">&quot;#f6f5fb&quot;</span>,
+       <span class="hljs-attr">&quot;background&quot;</span>: <span class="hljs-string">&quot;#3a3a3a&quot;</span>,
+       <span class="hljs-attr">&quot;foreground&quot;</span>: <span class="hljs-string">&quot;#dddddd&quot;</span>
+   &#125;
+],</code></pre></div>
+
+<p>每个人的审美都不同,会JSON的可以自己修改配色,不会赶紧去学🤓🤓🤓<br><br></p>
+<h2 id="6-安装PowerShell-插件"><a href="#6-安装PowerShell-插件" class="headerlink" title="6.安装PowerShell 插件"></a>6.安装PowerShell 插件</h2><p>打开Windows Terminal , 执行以下命令</p>
+<div class="code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"> 1. 安装 PSReadline 包，该插件可以让Windows Terminal执行linux命令</span>
+Install-Module -Name PSReadLine -AllowPrerelease -Force
+<span class="hljs-meta"></span>
+<span class="hljs-meta">#</span><span class="bash"> 2. 安装 posh-git 包，让你的 git 更好用</span>
+Install-Module posh-git -Scope CurrentUser
+<span class="hljs-meta"></span>
+<span class="hljs-meta">#</span><span class="bash"> 3. 安装 oh-my-posh 包，让你的命令行更酷炫、优雅</span>
+Install-Module oh-my-posh -Scope CurrentUser</code></pre></div>
+
+<p>最后两个包可能会被提示不受系统信任 , 如果提示输入Y回车即可<br><br></p>
+<h2 id="7-设置PowerShell-插件"><a href="#7-设置PowerShell-插件" class="headerlink" title="7.设置PowerShell 插件"></a>7.设置PowerShell 插件</h2><p>打开Windows Terminal , 执行<code>$Profile</code>得到一个路径</p>
+<div class="code-wrapper"><pre><code class="hljs shell">C:\Users\当前用户名\Documents\PowerShell\Microsoft.PowerShell_profile.ps1</code></pre></div>
+
+<p>打开这个Microsoft.PowerShell_profile.ps1文件</p>
+<div class="code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"> 引入 posh-git</span>
+Import-Module posh-git
+<span class="hljs-meta"></span>
+<span class="hljs-meta">#</span><span class="bash"> 引入 oh-my-posh</span>
+Import-Module oh-my-posh
+<span class="hljs-meta"></span>
+<span class="hljs-meta">#</span><span class="bash"> 设置 PowerShell 主题</span>
+Set-Theme Emodipt
+
+主题文件存放在 C:\Users\当前用户名\Documents\PowerShell\Modules\oh-my-posh\2.0.440\Themes
+</code></pre></div>
+<br>
+
+
+<h2 id="8-完成安装"><a href="#8-完成安装" class="headerlink" title="8.完成安装"></a>8.完成安装</h2><p><img src="https://github.com/MokYan/Figurebed/blob/master/Terminal/Windows-Terminal.jpg?raw=true" srcset="/Life/img/loading.gif" lazyload></p>
+<p><font align="center" font-size="12px">(ps:本文所要程序均为以管理员运行,若文章显示不正常,狂按F5😘)</font></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/Life/categories/%E8%B5%84%E6%BA%90%E5%88%86%E4%BA%AB/">资源分享</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/Life/tags/%E7%BB%88%E7%AB%AF/">终端</a>
+                    
+                      <a class="hover-with-bg" href="/Life/tags/Windows-Terminal/">Windows Terminal</a>
+                    
+                      <a class="hover-with-bg" href="/Life/tags/Terminal/">Terminal</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/Life/post/The-Cover/">
+                        <span class="hidden-mobile">上网冲浪小技巧——下载高清专辑封面</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'boxy-light';
+      var dark = 'github-dark-orange';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'MokYan/MokYan.github.io');
+      s.setAttribute('issue-term', 'title');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/Life/js/events.js" ></script>
+<script  src="/Life/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/Life/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/Life/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/Life/js/boot.js" ></script>
+
+
+</body>
+</html>
